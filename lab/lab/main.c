@@ -1,23 +1,27 @@
 #include <stdio.h>
  
-int main() {
-    int m, n, p, s = 0;
+int main()
+{
+    int  x1,y1,x2,y2,x3,y3,a,b,A,B,C;
+    printf("Введите вершину (x1 и y1) через пробел: \n");
+    scanf("%d%d", &x1, &y1);
+    printf("Введите вершину (x2 и y2) через пробел: \n");
+    scanf("%d%d", &x2, &y2);
+    printf("Введите вершину (x3 и y3) через пробел: \n");
+    scanf("%d%d", &x3, &y3);
+    printf("Введите точку (a и b) через пробел: \n");
+    scanf("%d%d", &a, &b);
     
-    printf("Введите число m: \n");
-    scanf("%d", &m);
-    printf("Введите число n: \n");
-    scanf("%d", &n);
-    printf("Введите число p: \n");
-    scanf("%d", &p);
-    if(m < 0)
-        ++s;
-    if(n < 0)
-        ++s;
-    if(p < 0)
-        ++s;
+    A = (x1 - a) * (y2 - y1) - (x2 - x1) * (y1 - b);
+    B = (x2 - a) * (y3 - y2) - (x3 - x2) * (y2 - b);
+    C = (x3 - a) * (y1 - y3) - (x1 - x3) * (y3 - b);
     
-    printf("Отрицательных чисел: %d\n", s);
-    
+    if (A >= 0 && B >= 0 && C >= 0)
+    printf("Лежит\n");
+    if (A <= 0 && B <= 0 && C <= 0)
+    printf("Лежит\n");
+    else
+    printf("Не лежит\n");
     return 0;
 }
 
