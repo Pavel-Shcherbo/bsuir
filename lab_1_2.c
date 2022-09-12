@@ -1,6 +1,8 @@
+//Л.Р. 1 задание 2 задача 14
 #include <stdio.h>
  
-int main() {
+int main()
+{
     int m, n, p, s = 0;
     
     printf("Введите число m: \n");

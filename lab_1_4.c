@@ -1,3 +1,4 @@
+//Л.Р. 1 задание 4 задача 14
 #include <stdio.h>
  
 int main()

@@ -1,8 +1,9 @@
+//Л.Р. 1 задание 1 задача 1
 #include <stdio.h>
- 
 #define PI 3.1415
  
-int main() {
+int main()
+{
     float r, h;
     double area = 0;
     double poln = 0;
