@@ -1,29 +1,27 @@
-//Л.Р. 2 задание 3 задача 15
 #include <stdio.h>
-#include <math.h>
-
+#define PI 3.1415
+ 
 int main()
 {
-
-    int degree;
-    double x,sine,term;
-    unsigned i = 1;
-    printf("Введите значение в градусах: \n");
-    scanf("%d", &degree);
+    float r, h;
+    double area = 0;
+    double poln = 0;
+    double volume = 0;
     
-    x = degree*M_PI/180;
+    printf("Введите радиус цилиндра: \n");
+    scanf("%f", &r);
     
-    term = x;
-    sine = term;
+    printf("Введите высоту цилиндра: \n");
+    scanf("%f", &h);
+ 
+    area = 2 * r * h * PI;
+    printf("Площадь боковой поверхности цилиндра: %.2f\n", area);
     
-    while(fabs(term)>0.00001)
-    {
-        i=i+2;
-        term=-term*x*x/(i*(i-1));
-        sine=sine+term;
-    }
-    printf("%d %lf\n", degree, sine);
-    //printf("%d %lf\n", degree, sin(x));
-           
-return 0;
+    poln = 2 * PI * r *(r + h);
+    printf("Площадь полной поверхности цилиндра: %.2f\n", poln);
+    
+    volume = PI * r * r * h;
+    printf("Объем цилиндра: %.2f\n", volume);
+    
+    return 0;
 }
