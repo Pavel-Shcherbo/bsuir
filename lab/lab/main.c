@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-const float PI = 3.1415926535897932384626;
+//const float PI = 3.1415926535897932384626;
 int main()
 {
 
