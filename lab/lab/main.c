@@ -4,6 +4,11 @@
  
 int main()
 {
-    printf(<#const char *restrict, ...#>)
-    return 0;
+    int n, i = 0;
+    scanf("%i", &n);
+
+    int mass[100];
+    for (int i = 0; i < n; i++) {
+        scanf("%i", &mass[i]);}
+    printf("%d", mass[i]);
 }
