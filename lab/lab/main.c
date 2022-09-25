@@ -4,6 +4,6 @@
  
 int main()
 {
-    
+    printf(<#const char *restrict, ...#>)
     return 0;
 }
