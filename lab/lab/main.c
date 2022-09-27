@@ -4,7 +4,7 @@
 
 int main()
 {
-    int a[100],i,n,min,max, idx_min = 0;
+    int a[100],i,n,min,max, idx_min = 0, c = 0;
   
    printf("Enter size of the array : ");
    scanf("%d",&n);
@@ -32,11 +32,22 @@ int main()
           if(max<a[i])
            max=a[i];
    }
-    printf("minimum of array is : %d",min);
+    printf("\nminimum of array is : %d",min);
    
     for (int i = 0; i < n; ++i) if (a[i] == min) idx_min = i;
-     
-       printf("\n%d\n", idx_min);
+    printf("\n Position of min el: %d\n", idx_min);
+    
+  //  for(int i = 0; c < 2; i++ ){
+        if (a[i]>0){
+            printf("Incorrect");
+            break;
+        }
+        if (a[i]<0){
+            c+=1;
+            printf("%d", i);
+        }
+            };
+    
     
    return 0;
 }
