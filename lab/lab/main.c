@@ -43,7 +43,7 @@ int main()
             }
         break;}
     
-    printf("\nArray_1: \n");
+    printf("\nArray_1 : \n");
     for (int i = 0; i < n; i++){
         printf("%d ", a[i]);}
     printf("\nArray_2: \n");
