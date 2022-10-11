@@ -62,7 +62,7 @@ int main() {
         {
             for(unsigned int k=0;k<n;k++)
                 sum =sum + a[k][j];
-            sum = sum / n;
+                sum = sum / n;
             for (int j = 0; j < n; j++)
                 for (int k = 0; k < m; k++)
                     a[j][k] -= sum;
