@@ -42,6 +42,42 @@ int main() {
         }
         printf("\n");
     }
-    
+    for(unsigned int j = 0; j < n; j++)
+    {
+        negative = true;
+        sum = 0;
+       for(unsigned int k=0;k<n;k++)
+       {
+           //sum =sum + a[k][j];
+           if(a[k][j] > 0) {
+               negative = false;
+               break;
+           }
+       }
+        
+        if(negative)
+        {
+            for(unsigned int k=0;k<n;k++)
+                sum =sum + a[k][j];
+            
+            sum = sum / n;
+            
+            for (int j = 0; j < n; j++)
+                for (int k = 0; k < n; k++)
+                    a[j][k] -= sum;
+            printf("\n\n");
+            for(int j=0;j<n;j++){
+                for(int k=0;k<n;k++){
+                    printf("%d ",a[j][k]);
+                }
+                printf("\n");
+            }
+            
+            break;
+        }
+        
+        else if (j == n - 1)
+            printf("There is no negatives columns\n");
+    }
     return 0;
 }
