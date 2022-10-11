@@ -30,7 +30,7 @@ int main() {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++)
                 {
-                    a[j][k] = (rand() % 11-5);
+                    a[j][k] = (rand() % 20-9);
                 }
             }
             break;

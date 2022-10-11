@@ -34,7 +34,7 @@ int main() {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < m; k++)
                 {
-                    a[j][k] = (rand() % 11-5);
+                    a[j][k] = (rand() % 20-9);
                 }
             }
             break;
@@ -43,7 +43,7 @@ int main() {
     }
     for(int j=0;j<n;j++){
         for(int k=0;k<m;k++){
-            printf("%d ",a[j][k]);
+            printf("%d\t",a[j][k]);
         }
         printf("\n");
     }
@@ -69,7 +69,7 @@ int main() {
             printf("\n\n");
             for(int j=0;j<n;j++){
                 for(int k=0;k<m;k++){
-                    printf("%d ",a[j][k]);
+                    printf("%d\t",a[j][k]);
                 }
                 printf("\n");
             }

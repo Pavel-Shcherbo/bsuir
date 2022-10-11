@@ -28,9 +28,7 @@ int main() {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++)
                 {
-                    // printf("arr[%d][%d]=", j, k);
-                    a[j][k] = (rand() % 10-5);
-                    // printf("%d\n", a[j][k]);
+                    a[j][k] = (rand() % 20-10);
                 }
             }
             break;
@@ -39,14 +37,14 @@ int main() {
     }
     for(int j=0;j<n;j++){
         for(int k=0;k<n;k++){
-            printf("%d ",a[j][k]);
+            printf("%d\t",a[j][k]);
         }
         printf("\n");
     }
     printf("\n");
     for(int j=0;j<n/2;j++){
         for(int k=n/2;k<n;k++){
-            printf("%d ",a[j][k]);
+            printf("%d\t",a[j][k]);
         }
         printf("\n");
     }
