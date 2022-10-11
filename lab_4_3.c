@@ -1,80 +1,63 @@
-//Л.Р. 3 задание 3 задача 14
+//Л.Р. 4 задание 3 задача 14
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
-
-int main()
-{
-    int a[100], b[100], i, n=0, flag = 0, p;
-    bool boolean = 0;
-    
-    while (n > 100 || n < 2 || n % 1 != 0) {
+#include <time.h>
+int main() {
+    int n=0, p=0, min=100;
+    int a[100][100];
+    while (n > 100 || n < 2) {
         rewind(stdin);
         printf("Enter size of the array : ");
-        scanf("%d", &n);
-    }
-    printf("Choose 1 to random and 2 for manual input\n");
-    scanf("%i", &p);
+        scanf("%d",&n);}
+    while (p > 2 || p < 1) {
+        rewind(stdin);
+        printf("Press 1 to manual input, press 2 to random\n");
+        scanf("%i", &p);}
+    srand(time(0));
     switch (p) {
         case 1:
-            for (int i = 0; i < n; i++) {
-                a[i] = (rand() %10);
-                printf("the %dth element of array is %d\n", i, a[i]);}
-            for (int i = 0; i < n; i++) {
-                b[i] = (rand() %10);
-                printf("the %dth element of array is %d\n", i, b[i]);}
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++)
+                {
+                    printf("arr[%d][%d]=", j, k);
+                    scanf("%d", &a[j][k]);
+                }
+            }
             break;
         case 2:
-            printf("Enter elements in array_1 : ");
-            for (i = 0; i < n; i++){
-                boolean = scanf("%d", &a[i]);
-                while (boolean != 1) {
-                    printf("Pls try again\n");
-                    rewind(stdin);
-                    boolean = scanf("%d", &a[i]);}
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++)
+                {
+                    // printf("arr[%d][%d]=", j, k);
+                    a[j][k] = (rand() % 10-5);
+                    // printf("%d\n", a[j][k]);
+                }
             }
-            printf("Enter elements in array_2 : ");
-            for (i = 0; i < n; i++){
-                boolean = scanf("%d", &b[i]);
-                while (boolean != 1) {
-                    printf("Pls try again\n");
-                    rewind(stdin);
-                    boolean = scanf("%d", &b[i]);}
-            }
-        break;}
-    
-    printf("\nArray_1: \n");
-    for (int i = 0; i < n; i++){
-        printf("%d ", a[i]);}
-    printf("\nArray_2: \n");
-    for (int i = 0; i < n; i++){
-        printf("%d ", b[i]);}
-    i = 0;
-    while (flag != 1) {
-        if (a[i] != b[i]) {
             break;
-        }
-        i++;}
-    if (a[i] > b[i]) {
-        for (i = n - 1; i >= 0; i--) {
-            a[i] = a[i] - b[i];
-            if (a[i] < 0) {
-                a[i] += 10;
-                a[i - 1] -= 1;}
-        }
-        printf("\nArray_itog: \n");
-        for (int i = 0; i < n; i++){
-            printf("%d ", a[i]);}
+        default:
+            printf("stupid");
     }
-    else {
-        for (i = n - 1; i >= 0; i--) {
-            b[i] = b[i] - a[i];
-            if (b[i] < 0) {
-                b[i] += 10;
-                b[i - 1] -= 1;}
+    for(int j=0;j<n;j++){
+        for(int k=0;k<n;k++){
+            printf("%d ",a[j][k]);
         }
-        printf("\nArray_itog: \n");
-        for (int i = 0; i < n; i++){
-            printf("%d ", b[i]);}
+        printf("\n");
     }
+    printf("\n");
+    for(int j=0;j<n/2;j++){
+        for(int k=n/2;k<n;k++){
+            printf("%d ",a[j][k]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    for(int j=0;j<n/2;++j){
+        for(int k=n/2;k<n;++k){
+            if (a[j][k] < min)
+            {
+                min = a[j][k];
+            }
+        }
+    }
+    printf("min = %d\n", min);
     return 0;}
