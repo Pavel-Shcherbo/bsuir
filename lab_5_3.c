@@ -1,11 +1,10 @@
-//Л.Р. 5 задание 1
+//Л.Р. 4 задание 3 задача 14
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <time.h>
 int main() {
-    int n=0, p=0,r=0;
-    int a[100][100], sum=0;
+    int n=0, p=0, min=100;
+    int a[100][100];
     while (n > 100 || n < 2) {
         rewind(stdin);
         printf("Enter size of the array : ");
@@ -29,7 +28,7 @@ int main() {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++)
                 {
-                    a[j][k] = (rand() % 10);
+                    a[j][k] = (rand() % 20-9);
                 }
             }
             break;
@@ -42,18 +41,21 @@ int main() {
         }
         printf("\n");
     }
-    for(unsigned int j = 0; j < n; j++)
-    { sum = 0;
-        for(unsigned int k=0;k<n;k++)
-        {
-            sum =sum + a[j][k];
-            }
-            for(unsigned int k=0;k<n;k++)
-            {
-                if (a[j][k] > sum-a[j][k]){
-                    printf("est\n");
-                }
-            }
+    printf("\n");
+    for(int j=0;j<n/2;j++){
+        for(int k=n/2;k<n;k++){
+            printf("%d\t",a[j][k]);
+        }
+        printf("\n");
     }
+    printf("\n");
+    for(int j=0;j<n/2;++j){
+        for(int k=n/2;k<n;++k){
+            if (a[j][k] < min)
+            {
+                min = a[j][k];
+            }
+        }
+    }
+    printf("min = %d\n", min);
     return 0;}
-
