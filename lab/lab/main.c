@@ -4,8 +4,8 @@
 #include <stdbool.h>
 #include <time.h>
 int main() {
-    int n=0, p=0,r=0;
-    int a[100][100], sum=0;
+    int n=0, p=0, num=0;
+    int a[100][100];
     while (n > 100 || n < 2) {
         rewind(stdin);
         printf("Enter size of the array : ");
@@ -29,31 +29,36 @@ int main() {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++)
                 {
-                    a[j][k] = (rand() % 10);
+                    a[j][k] = (rand() % 9+1);
                 }
             }
             break;
         default:
             printf("stupid");
     }
+    printf("vvedite k ");
+    scanf("%d", &num);
+
     for(int j=0;j<n;j++){
         for(int k=0;k<n;k++){
             printf("%d\t",a[j][k]);
         }
         printf("\n");
     }
-    for(unsigned int j = 0; j < n; j++)
-    { sum = 0;
-        for(unsigned int k=0;k<n;k++)
-        {
-            sum =sum + a[j][k];
-            }
-            for(unsigned int k=0;k<n;k++)
-            {
-                if (a[j][k] > sum-a[j][k]){
-                    printf("est\n");
-                }
-            }
-    }
+
     return 0;}
+
+void bubblesort(int *a, int n)
+{
+  int j, nn;
+
+  do {
+    nn = 0;
+    for (j = 1; j < n; ++j)
+      if (a[j] < num) {
+          a[j] = 0;
+      }
+    n = nn;
+  } while (n);
+}
 
