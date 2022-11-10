@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "swap_column:6_2.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "sum_m[1][2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:6_2.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "sum_m[0][2]">
+            </PersistentString>
+            <PersistentString
+               value = "sum_m[1][2]">
+            </PersistentString>
+            <PersistentString
+               value = "sum_m[0][1]">
+            </PersistentString>
+            <PersistentString
+               value = "sum_m[2][2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "separation:6_2.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "sum_m[2][2]">
+            </PersistentString>
+            <PersistentString
+               value = "sum_m[0][2]">
+            </PersistentString>
+            <PersistentString
+               value = "sum_m[1][2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
