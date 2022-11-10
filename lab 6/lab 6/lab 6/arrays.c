@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "arrays.h"
+
 int checkinput(int a, int m, int z) {
     while (scanf("%d", &a) != 1 || getchar() != '\n' || a < m || a > z) {
         printf("Pls enter a NUMBER between %d to %d\n", m, z);

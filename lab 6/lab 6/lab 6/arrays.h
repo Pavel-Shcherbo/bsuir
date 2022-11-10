@@ -1,4 +1,5 @@
 #pragma once
+
 void outputmas(int** mas, int n, int m);
 int checkinput(int a, int m, int z);
 void swap(int *a, int *b);
