@@ -19,7 +19,7 @@ int str_len(char *s)
     return i;
 }
 
-char *str_cat(char *s1, char *s2, int k)
+char* str_cat(char *s1, char *s2, int k)
 { char *s;
   int i, len1 = str_len(s1), len2 = str_len(s2);
         
@@ -45,24 +45,10 @@ int checkinput(int a) {
     return a;
 }
 
-void *choice(void){
-    int num;
-    printf("What task you want to solve 1 or 2?");
-    scanf("%d", &num);
-    switch(num){
-        case 1:
-            task1();
-            break;
-        case 2:
-            task2();
-            break;
-    }
-    return choice;
-}
-
 
 void *task1(void)
-{   char shortest_str[100];
+{
+    char shortest_str[100];
     int len,i, index = 0,min_wlen = 0, wlen = 0;
     int n=100;
     char *str = (char *)malloc(sizeof(char) * n);
