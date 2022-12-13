@@ -109,7 +109,7 @@ void *longest_words(char** str, int* length, int n, int* max) {
 }
 
 
-void *sort_string(int argc, char** argv) {
+void *sorted_string(int argc, char** argv) {
     int* len = NULL;
     int* max = NULL;
     int* max_ind = NULL;
@@ -128,7 +128,7 @@ void *sort_string(int argc, char** argv) {
     for (int i = 0; i < n; i++) {
         max_ind[i] = i;
         str[i] = (char*)calloc(1, 1);
-        printf("%d. ", i + 1);
+        //printf("%d. ", i + 1);
         input_str(&str[i]);
         len[i] = 0;
         str_len(str[i], &len[i]);
@@ -145,12 +145,12 @@ void *sort_string(int argc, char** argv) {
     free(max);
     free(max_ind);
     free(len);
-    return sort_string;
+    return sorted_string;
 }
 
-void *choose(int n) {
-    void (*function[1])(void) = {sort_string};
+void *choice(int n) {
+    void (*function[1])(void) = {sorted_string};
     int num = 1;
     function[num - 1]();
-    return choose;
+    return choice;
 }
