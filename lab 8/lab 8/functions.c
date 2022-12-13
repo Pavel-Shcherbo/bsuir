@@ -111,8 +111,8 @@ void *longest_words(char** str, int* length, int n, int* max) {
 
 void *sort_string(int argc, char** argv) {
     int* len = NULL;
-    int* min = NULL;
-    int* min_ind = NULL;
+    int* max = NULL;
+    int* max_ind = NULL;
     char** str = NULL;
     int n = 0;
     printf("Enter a number of strings\n");
@@ -122,28 +122,28 @@ void *sort_string(int argc, char** argv) {
     }
     str = (char**)calloc(n, 1 * sizeof(char*));
     printf("\nEnter strings\n");
-    min = (int*)calloc(n, sizeof(int));
-    min_ind = (int*)calloc(n, sizeof(int));
+    max = (int*)calloc(n, sizeof(int));
+    max_ind = (int*)calloc(n, sizeof(int));
     len = (int*)malloc(n * sizeof(int));
     for (int i = 0; i < n; i++) {
-        min_ind[i] = i;
+        max_ind[i] = i;
         str[i] = (char*)calloc(1, 1);
         printf("%d. ", i + 1);
         input_str(&str[i]);
         len[i] = 0;
         str_len(str[i], &len[i]);
     }
-    longest_words(str, len, n, min);
-    merge(min_ind, min, 0, n - 1);
+    longest_words(str, len, n, max);
+    merge(max_ind, max, 0, n - 1);
     printf("\nSorted array \n");
     for (int i = 0; i < n; i++)
-        printf("%s\n", str[min_ind[i]]);
+        printf("%s\n", str[max_ind[i]]);
     for (int i = 0; i < n; i++) {
         free(str[i]);
     }
     free(str);
-    free(min);
-    free(min_ind);
+    free(max);
+    free(max_ind);
     free(len);
     return sort_string;
 }
