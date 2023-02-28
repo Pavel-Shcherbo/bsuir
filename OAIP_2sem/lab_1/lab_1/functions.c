@@ -1,28 +1,50 @@
 #include <stdio.h>
 #include <string.h>
 #include "functions.h"
+#include <stdbool.h>
+#include <ctype.h>
+
+bool isValidInput() {
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    return true;
+}
+
 
 void createVacuumCleaners(VacuumCleaner vcArray[], int* size) {
     int numToCreate;
     printf("Enter the number of vacuum cleaners to create: ");
-    scanf("%d", &numToCreate);
+    while (scanf("%d", &numToCreate) != 1 || numToCreate <= 0) {
+        printf("Invalid input. Please enter a positive integer: ");
+        isValidInput();
+    }
 
     for (int i = 0; i < numToCreate; i++) {
         printf("Vacuum cleaner #%d\n", *size+1);
         printf("Product code: ");
-        scanf("%d", &vcArray[*size].productCode);
+        while (scanf("%d", &vcArray[*size].productCode) != 1) {
+            printf("Invalid input. Please enter an integer: ");
+            isValidInput();
+        }
         printf("Name: ");
         scanf("%s", vcArray[*size].name);
         printf("Color (0=RED, 1=BLUE, 2=GREEN, 3=YELLOW, 4=PURPLE): ");
         int color;
-        scanf("%d", &color);
+        while (scanf("%d", &color) != 1 || color < 0 || color > 4) {
+            printf("Invalid input. Please enter a number between 0 and 4: ");
+            isValidInput();
+        }
         vcArray[*size].color = color;
         printf("\nPrice: ");
-        scanf("%lf", &vcArray[*size].price);
+        while (scanf("%lf", &vcArray[*size].price) != 1) {
+            printf("Invalid input. Please enter a number: ");
+            isValidInput();
+        }
         (*size)++;
     }
     printf("%d vacuum cleaner(s) created successfully.\n", numToCreate);
 }
+
 
 void displayVacuumCleaners(const VacuumCleaner vcArray[], int size) {
     if (size == 0) {
