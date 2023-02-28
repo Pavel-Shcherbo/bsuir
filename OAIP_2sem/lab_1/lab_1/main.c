@@ -18,8 +18,12 @@ int main() {
         printf("8. Sort by color then year\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
-
+        int result = scanf("%d", &choice);
+        if (result != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            while (getchar() != '\n');
+            continue;
+        }
         switch (choice) {
             case 1:
                 createVacuumCleaners(vcArray, &vcArraySize);
