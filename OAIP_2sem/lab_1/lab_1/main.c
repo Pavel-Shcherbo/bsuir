@@ -15,7 +15,7 @@ int main() {
         printf("5. Sort by name\n");
         printf("6. Sort by color\n");
         printf("7. Sort by price\n");
-        printf("8. Sort by color then year\n");
+        printf("8. Sort by color and code\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         int result = scanf("%d", &choice);
