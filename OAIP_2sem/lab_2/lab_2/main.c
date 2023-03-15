@@ -58,11 +58,13 @@ void freeList(Node* head) {
 
 void compress(const char* inputFile, const char* compressedFile) {
     FILE* input = fopen(inputFile, "r");
+
     if (input == NULL) {
         printf("Error opening input file\n");
         return;
     }
     FILE* output = fopen(compressedFile, "w");
+
     if (output == NULL) {
         printf("Error opening output file\n");
         fclose(input);
@@ -71,11 +73,13 @@ void compress(const char* inputFile, const char* compressedFile) {
     Node* longWord = NULL;
     Node* shortWord = NULL;
     char word[MAX_WORD_LENGTH];
+
     while (fscanf(input, "%s", word) == 1) {
         insertNode(&longWord, word);
         insertNode(&shortWord, word);
     }
     Node* curr = longWord;
+
     while (curr != NULL) {
         if (curr->count > longWord->count) {
             longWord = curr;
@@ -83,6 +87,7 @@ void compress(const char* inputFile, const char* compressedFile) {
         curr = curr->next;
     }
     curr = shortWord;
+
     while (curr != NULL) {
         if (curr->count < shortWord->count) {
             shortWord = curr;
@@ -90,6 +95,7 @@ void compress(const char* inputFile, const char* compressedFile) {
         curr = curr->next;
     }
     fseek(input, 0, SEEK_SET);
+
     while (fscanf(input, "%s", word) == 1) {
         if (strcmp(word, longWord->word) == 0) {
             fprintf(output, "%s ", shortWord->word);
@@ -101,6 +107,7 @@ void compress(const char* inputFile, const char* compressedFile) {
     }
     fclose(input);
     fclose(output);
+
     printf("File compressed successfully.\n");
 }
 
