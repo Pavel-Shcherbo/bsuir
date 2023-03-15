@@ -153,9 +153,9 @@ void decompress(char* compressedFile, char* outputFile) {
 }
 
 int main() {
-    char inputFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/lab_2/input.txt";
-    char compressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/lab_2/compressed.txt";
-    char decompressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/lab_2/decompressed.txt";
+    char inputFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/input.txt";
+    char compressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2lab_2/compressed.txt";
+    char decompressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2lab_2/decompressed.txt";
     compress(inputFileName, compressedFileName);
     decompress(compressedFileName, decompressedFileName);
     return 0;
