@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BFC08BAE29C12E780011586B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BFC08BAD29C12E780011586B /* main.c */; };
+		BFC08BC829C146AD0011586B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BFC08BC729C146AD0011586B /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BFC08BA829C12E780011586B /* CopyFiles */ = {
+		BFC08BC229C146AD0011586B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,16 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BFC08BAA29C12E780011586B /* lab_2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab_2; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFC08BAD29C12E780011586B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		BFC08BB429C132B20011586B /* input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
-		BFC08BB829C135BE0011586B /* output.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
-		BFC08BB929C13ADD0011586B /* compressed.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = compressed.txt; sourceTree = "<group>"; };
-		BFC08BBA29C13AEF0011586B /* decompressed.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = decompressed.txt; sourceTree = "<group>"; };
+		BFC08BC429C146AD0011586B /* lab_2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab_2; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC08BC729C146AD0011586B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BFC08BA729C12E780011586B /* Frameworks */ = {
+		BFC08BC129C146AD0011586B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,30 +38,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BFC08BA129C12E780011586B = {
+		BFC08BBB29C146AD0011586B = {
 			isa = PBXGroup;
 			children = (
-				BFC08BAC29C12E780011586B /* lab_2 */,
-				BFC08BAB29C12E780011586B /* Products */,
+				BFC08BC629C146AD0011586B /* lab_2 */,
+				BFC08BC529C146AD0011586B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BFC08BAB29C12E780011586B /* Products */ = {
+		BFC08BC529C146AD0011586B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFC08BAA29C12E780011586B /* lab_2 */,
+				BFC08BC429C146AD0011586B /* lab_2 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BFC08BAC29C12E780011586B /* lab_2 */ = {
+		BFC08BC629C146AD0011586B /* lab_2 */ = {
 			isa = PBXGroup;
 			children = (
-				BFC08BAD29C12E780011586B /* main.c */,
-				BFC08BBA29C13AEF0011586B /* decompressed.txt */,
-				BFC08BB929C13ADD0011586B /* compressed.txt */,
-				BFC08BB429C132B20011586B /* input.txt */,
-				BFC08BB829C135BE0011586B /* output.txt */,
+				BFC08BC729C146AD0011586B /* main.c */,
 			);
 			path = lab_2;
 			sourceTree = "<group>";
@@ -73,13 +65,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BFC08BA929C12E780011586B /* lab_2 */ = {
+		BFC08BC329C146AD0011586B /* lab_2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFC08BB129C12E780011586B /* Build configuration list for PBXNativeTarget "lab_2" */;
+			buildConfigurationList = BFC08BCB29C146AD0011586B /* Build configuration list for PBXNativeTarget "lab_2" */;
 			buildPhases = (
-				BFC08BA629C12E780011586B /* Sources */,
-				BFC08BA729C12E780011586B /* Frameworks */,
-				BFC08BA829C12E780011586B /* CopyFiles */,
+				BFC08BC029C146AD0011586B /* Sources */,
+				BFC08BC129C146AD0011586B /* Frameworks */,
+				BFC08BC229C146AD0011586B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -87,24 +79,24 @@
 			);
 			name = lab_2;
 			productName = lab_2;
-			productReference = BFC08BAA29C12E780011586B /* lab_2 */;
+			productReference = BFC08BC429C146AD0011586B /* lab_2 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BFC08BA229C12E780011586B /* Project object */ = {
+		BFC08BBC29C146AD0011586B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					BFC08BA929C12E780011586B = {
+					BFC08BC329C146AD0011586B = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = BFC08BA529C12E780011586B /* Build configuration list for PBXProject "lab_2" */;
+			buildConfigurationList = BFC08BBF29C146AD0011586B /* Build configuration list for PBXProject "lab_2" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,29 +104,29 @@
 				en,
 				Base,
 			);
-			mainGroup = BFC08BA129C12E780011586B;
-			productRefGroup = BFC08BAB29C12E780011586B /* Products */;
+			mainGroup = BFC08BBB29C146AD0011586B;
+			productRefGroup = BFC08BC529C146AD0011586B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFC08BA929C12E780011586B /* lab_2 */,
+				BFC08BC329C146AD0011586B /* lab_2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BFC08BA629C12E780011586B /* Sources */ = {
+		BFC08BC029C146AD0011586B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFC08BAE29C12E780011586B /* main.c in Sources */,
+				BFC08BC829C146AD0011586B /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BFC08BAF29C12E780011586B /* Debug */ = {
+		BFC08BC929C146AD0011586B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -192,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		BFC08BB029C12E780011586B /* Release */ = {
+		BFC08BCA29C146AD0011586B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -243,7 +235,7 @@
 			};
 			name = Release;
 		};
-		BFC08BB229C12E780011586B /* Debug */ = {
+		BFC08BCC29C146AD0011586B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -251,7 +243,7 @@
 			};
 			name = Debug;
 		};
-		BFC08BB329C12E780011586B /* Release */ = {
+		BFC08BCD29C146AD0011586B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -262,25 +254,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BFC08BA529C12E780011586B /* Build configuration list for PBXProject "lab_2" */ = {
+		BFC08BBF29C146AD0011586B /* Build configuration list for PBXProject "lab_2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BFC08BAF29C12E780011586B /* Debug */,
-				BFC08BB029C12E780011586B /* Release */,
+				BFC08BC929C146AD0011586B /* Debug */,
+				BFC08BCA29C146AD0011586B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFC08BB129C12E780011586B /* Build configuration list for PBXNativeTarget "lab_2" */ = {
+		BFC08BCB29C146AD0011586B /* Build configuration list for PBXNativeTarget "lab_2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BFC08BB229C12E780011586B /* Debug */,
-				BFC08BB329C12E780011586B /* Release */,
+				BFC08BCC29C146AD0011586B /* Debug */,
+				BFC08BCD29C146AD0011586B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BFC08BA229C12E780011586B /* Project object */;
+	rootObject = BFC08BBC29C146AD0011586B /* Project object */;
 }
