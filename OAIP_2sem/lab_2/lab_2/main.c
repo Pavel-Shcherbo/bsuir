@@ -10,7 +10,7 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-Node* createNode(char* word) {
+Node* createNode(const char* word) {
     Node* node = (Node*)malloc(sizeof(Node));
     strcpy(node->word, word);
     node->count = 1;
@@ -153,9 +153,9 @@ void decompress(char* compressedFile, char* outputFile) {
 }
 
 int main() {
-    char inputFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/input.txt";
-    char compressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2lab_2/compressed.txt";
-    char decompressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2lab_2/decompressed.txt";
+    char inputFileName[] = "input.txt";
+    char compressedFileName[] = "compressed.txt";
+    char decompressedFileName[] = "decompressed.txt";
     compress(inputFileName, compressedFileName);
     decompress(compressedFileName, decompressedFileName);
     return 0;
