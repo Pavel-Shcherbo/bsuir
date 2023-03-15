@@ -56,7 +56,7 @@ void freeList(Node* head) {
     }
 }
 
-void compress(char* inputFile, const char* compressedFile) {
+void compress(const char* inputFile, const char* compressedFile) {
     FILE* input = fopen(inputFile, "r");
     if (input == NULL) {
         printf("Error opening input file\n");
@@ -104,7 +104,7 @@ void compress(char* inputFile, const char* compressedFile) {
     printf("File compressed successfully.\n");
 }
 
-void decompress(char* compressedFile, const char* outputFile) {
+void decompress(const char* compressedFile, const char* outputFile) {
     FILE* input = fopen(compressedFile, "r");
     if (input == NULL) {
         printf("Error opening input file\n");
