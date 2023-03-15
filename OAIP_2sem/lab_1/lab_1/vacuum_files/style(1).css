@@ -1,0 +1,271 @@
+.chat {
+    width: 100%;
+}
+
+.chat .chat__content .chat__body {
+    top: 52px;
+    bottom: 82px;
+    border-bottom: 1px solid #DDDFE0;
+}
+
+.chat .chat__content-footer--link {
+    margin-right: 0px;
+    margin-left: auto;
+    display: table;
+    margin-top: -0.1rem;
+    color: #0072BC;
+}
+
+.company-logo-container {
+    height: 52px;    
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    background-color: white;
+    border-bottom: 1px solid #DDDFE0;
+}
+
+.company-logo {
+    display: flex;
+    width: 80px;
+    height: 26.67px;
+    background-image: url("../img/chat_logo.svg") !important;
+    background-size: 30px 24px;
+    background-color: white;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-top: 13px;
+}
+
+.wmde-markdown {
+    font-size: 14px;
+    font-family: Arial;
+}
+
+.client_message {
+    margin-top: 40px;
+}
+
+.operator_message {
+    background-image: url("../img/logo_21vek.png");
+    background-size: 40px, 40px !important;
+    background-repeat: no-repeat;
+    background-position: left top 5px !important;
+    justify-content: flex-start;
+    display: flex;
+    margin-top: 40px;
+}
+
+.client_message .message__content {
+    background:#E62E6B;
+    color: white;
+    border-radius: 8px 8px 8px 8px;
+    border: 0px;
+    box-shadow: none;
+    width: unset;
+    min-width: 20%;
+    max-width: 70%;
+    padding: 16px;
+}
+
+.operator_message .message__content {
+    background: #f5dbe7;
+    border-radius: 8px 8px 8px 8px;
+    border: 0px solid;
+    box-shadow: none;
+    margin-left: 45px !important;
+    width: unset;
+    min-width: 20%;
+    max-width: 95%;
+    padding: 16px;
+}
+
+.message__content .message__created-date {
+    color: #b5bdb3;
+}
+
+
+.message__button {
+    border: #E62E6B 1px solid;
+    border-radius: 45px;
+    margin: 7px !important;
+    color: #E62E6B !important;
+    background-color: white !important;
+    padding: 10px;
+    font-family: Arial;
+}
+
+.message__button:hover {
+    border: white 1px solid;
+    border-radius: 45px;
+    margin: 7px !important;
+    padding: 10px;
+    background: linear-gradient(90deg,#941e94,#e52e6b) !important;
+    color: white !important;
+}
+
+.message__content .message__created-date {
+    color: #fff;
+    font-size: 0.75rem;
+    font-style: italic;
+}
+
+.operator_message .message__content .message__created-date {
+    color: black !important;
+    font-size: 0.75rem;
+    font-style: italic;
+}
+
+.choose-file-dialog__container {
+    top: -5px;
+    z-index: 1;
+}
+
+.choose-file-dialog__attach-image {
+    height: 24px;
+    width: 24px;
+}
+
+.choose-file-dialog__attach-image:hover {
+    filter: invert(45%) sepia(78%) saturate(6481%) hue-rotate(323deg) brightness(93%) contrast(92%);
+    height: 24px;
+    width: 24px;
+}
+
+.choose-file-dialog__attach-image_clicked {
+    filter: invert(45%) sepia(78%) saturate(6481%) hue-rotate(323deg) brightness(93%) contrast(92%);
+    height: 24px;
+    width: 24px;
+}
+
+.active-icon {    
+    filter: invert(45%) sepia(78%) saturate(6481%) hue-rotate(323deg) brightness(93%) contrast(92%);
+    cursor: pointer;
+}
+
+.send-button {
+    bottom: -9px;
+    margin-left: 30px !important;
+}
+
+.mic-button {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+    right: 40px;
+}
+
+.mic-button:hover {
+    filter: invert(45%) sepia(78%) saturate(6481%) hue-rotate(323deg) brightness(93%) contrast(92%);
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+}
+
+.mic-button-recording {
+    filter: invert(45%) sepia(78%) saturate(6481%) hue-rotate(323deg) brightness(93%) contrast(92%);
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+    right: 40px;
+}
+
+.message_avatar {
+    background-size: 40px 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: 6px !important;
+    margin-left: 15px !important;
+    border-radius: 50% !important;
+    left: 0px !important;
+}
+
+
+.message-input__text {
+    margin-left: -60px !important;
+    padding-left: 50px !important;
+    padding-right: 80px !important;
+    padding-bottom: 11px !important;
+    width: 100% !important;
+    bottom: 20px;
+}
+
+.operator_message_info {
+    position: absolute;
+    margin-left: -62px;
+    margin-top: -45px;
+    font-size: 12px;
+    font-family: Arial;
+    color: #909598;
+}
+
+.client_message_info {
+    position: absolute;
+    right: 21px;
+    margin-top: -45px;
+    font-size: 14px;
+    color: #909598;
+}
+
+.choose-file-dialog__menu-item{
+    padding-left: 0.4rem;
+    margin-left: 0;
+}
+
+.choose-file-dialog__menu-item:hover{
+    width: 100%;
+}
+
+.input-container {
+    height: 45px;
+}
+
+.input-container__fetch-file {
+    margin-top: 0.3rem;
+}
+
+.MuiInputBase-inputMultiline {
+    min-height: 23px;
+}
+
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid #DDDFE0; 
+}
+
+.MuiInput-underline:before {
+    border-bottom: 1px solid #DDDFE0; 
+}
+
+.MuiInput-underline:after {
+    border-bottom: 1px solid #DDDFE0;
+}
+
+.smiles-button {
+    font-size: 24px !important;
+    right: 70px;
+    bottom: 12px;
+    color: #ABAEB2;
+}
+
+.smiles-button:hover{
+    filter: invert(45%) sepia(78%) saturate(6481%) hue-rotate(323deg) brightness(93%) contrast(92%);    
+}
+
+.send-button-icon {
+    bottom: 17px;
+}
+
+.chat-input-contairner {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.input-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.input-container__fetch-file {
+    margin-left: 0px;
+    margin-right: 28px;
+}

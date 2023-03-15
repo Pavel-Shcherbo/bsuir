@@ -1,28 +1,62 @@
 #include <stdio.h>
 #include <string.h>
 #include "functions.h"
+#include <stdbool.h>
+
+bool isValidInput() {
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    return true;
+}
 
 void createVacuumCleaners(VacuumCleaner vcArray[], int* size) {
     int numToCreate;
     printf("Enter the number of vacuum cleaners to create: ");
-    scanf("%d", &numToCreate);
+    while (scanf("%d", &numToCreate) != 1 || numToCreate <= 0) {
+        printf("Invalid input. Please enter a positive integer: ");
+        isValidInput();
+    }
 
     for (int i = 0; i < numToCreate; i++) {
         printf("Vacuum cleaner #%d\n", *size+1);
         printf("Product code: ");
-        scanf("%d", &vcArray[*size].productCode);
+        int productCode;
+        while (scanf("%d", &productCode) != 1) {
+            printf("Invalid input. Please enter an integer: ");
+            isValidInput();
+        }
+        int codeExists = 0;
+        for (int j = 0; j < *size; j++) {
+            if (vcArray[j].productCode == productCode) {
+                codeExists = 1;
+                printf("Product code %d already exists.\n", productCode);
+                break;
+            }
+        }
+        if (codeExists) {
+            printf("This code already used");
+            continue;
+        }
+        vcArray[*size].productCode = productCode;
         printf("Name: ");
         scanf("%s", vcArray[*size].name);
         printf("Color (0=RED, 1=BLUE, 2=GREEN, 3=YELLOW, 4=PURPLE): ");
         int color;
-        scanf("%d", &color);
+        while (scanf("%d", &color) != 1 || color < 0 || color > 4) {
+            printf("Invalid input. Please enter a number between 0 and 4: ");
+            isValidInput();
+        }
         vcArray[*size].color = color;
         printf("\nPrice: ");
-        scanf("%lf", &vcArray[*size].price);
+        while (scanf("%lf", &vcArray[*size].price) != 1) {
+            printf("Invalid input. Please enter a number: ");
+            isValidInput();
+        }
         (*size)++;
     }
     printf("%d vacuum cleaner(s) created successfully.\n", numToCreate);
 }
+
 
 void displayVacuumCleaners(const VacuumCleaner vcArray[], int size) {
     if (size == 0) {
@@ -155,3 +189,69 @@ void sortByColorAndCode(VacuumCleaner vcArray[], int size) {
     }
 }
 
+
+void sortVacuumCleaners(VacuumCleaner vcArray[], int size) {
+    if (size == 0) {
+        printf("No vacuum cleaners to sort.\n");
+        return;
+    }
+
+    int field1, field2, dir;
+    printf("Enter first sorting field (0=product code, 1=name, 2=color, 3=price): ");
+    while (scanf("%d", &field1) != 1 || field1 < 0 || field1 > 3) {
+        printf("Invalid input. Please enter a number between 0 and 3: ");
+        isValidInput();
+    }
+
+    printf("Enter second sorting field (0=product code, 1=name, 2=color, 3=price): ");
+    while (scanf("%d", &field2) != 1 || field2 < 0 || field2 > 3) {
+        printf("Invalid input. Please enter a number between 0 and 3: ");
+        isValidInput();
+    }
+
+    printf("Enter sorting direction (0=ascending, 1=descending): ");
+    while (scanf("%d", &dir) != 1 || dir < 0 || dir > 1) {
+        printf("Invalid input. Please enter either 0 or 1: ");
+        isValidInput();
+    }
+
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - 1 - i; j++) {
+            int cmp = 0;
+            if (field1 == 0) {
+                cmp = vcArray[j].productCode - vcArray[j+1].productCode;
+            } else if (field1 == 1) {
+                cmp = strcmp(vcArray[j].name, vcArray[j+1].name);
+            } else if (field1 == 2) {
+                cmp = vcArray[j].color - vcArray[j+1].color;
+            } else if (field1 == 3) {
+                if (vcArray[j].price < vcArray[j+1].price) {
+                    cmp = -1;
+                } else if (vcArray[j].price > vcArray[j+1].price) {
+                    cmp = 1;
+                }
+            }
+            if (cmp == 0) {
+                if (field2 == 0) {
+                    cmp = vcArray[j].productCode - vcArray[j+1].productCode;
+                } else if (field2 == 1) {
+                    cmp = strcmp(vcArray[j].name, vcArray[j+1].name);
+                } else if (field2 == 2) {
+                    cmp = vcArray[j].color - vcArray[j+1].color;
+                } else if (field2 == 3) {
+                    if (vcArray[j].price < vcArray[j+1].price) {
+                        cmp = -1;
+                    } else if (vcArray[j].price > vcArray[j+1].price) {
+                        cmp = 1;
+                    }
+                }
+            }
+            if ((dir == 0 && cmp > 0) || (dir == 1 && cmp < 0)) {
+                VacuumCleaner temp = vcArray[j];
+                vcArray[j] = vcArray[j+1];
+                vcArray[j+1] = temp;
+            }
+        }
+    }
+    printf("Vacuum cleaners sorted.\n");
+}

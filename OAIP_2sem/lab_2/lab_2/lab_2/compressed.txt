@@ -1,0 +1,1 @@
+the is a sample text file to demonstrate text compression using a simple algorithm. The algorithm involves counting This frequency of occurrence of each word in This file, and searching for This most popular among long words and This most unpopular among short words, before replacing all instances of these words with each other. The process is repeated until it makes sense. 

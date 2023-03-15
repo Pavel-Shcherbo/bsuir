@@ -1,0 +1,1 @@
+This is a sample text file to demonstrate text compression using a simple algorithm. The algorithm involves counting the frequency of occurrence of each word in the file, and searching for the most popular among long words and the most unpopular among short words, before replacing all instances of these words with each other. The process is repeated until it makes sense. 

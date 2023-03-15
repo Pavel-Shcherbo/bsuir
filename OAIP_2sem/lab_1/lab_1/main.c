@@ -15,7 +15,7 @@ int main() {
         printf("5. Sort by name\n");
         printf("6. Sort by color\n");
         printf("7. Sort by price\n");
-        printf("8. Sort by color and code\n");
+        printf("8. Sort by two fields\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         int result = scanf("%d", &choice);
@@ -47,7 +47,7 @@ int main() {
                 sortByPrice(vcArray, vcArraySize);
                 break;
             case 8:
-                sortByColorAndCode(vcArray, vcArraySize);
+                sortVacuumCleaners(vcArray, vcArraySize);
                 break;
             case 0:
                 break;

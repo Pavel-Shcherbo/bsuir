@@ -18,4 +18,4 @@ void sortByName(VacuumCleaner vcArray[], int size);
 void sortByColor(VacuumCleaner vcArray[], int size);
 void sortByPrice(VacuumCleaner vcArray[], int size);
 void sortByColorAndCode(VacuumCleaner vcArray[], int size);
-
+void sortVacuumCleaners(VacuumCleaner vcArray[], int size);
