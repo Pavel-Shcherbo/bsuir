@@ -105,6 +105,7 @@ void compress(const char* inputFile, const char* compressedFile) {
             fprintf(output, "%s ", word);
         }
     }
+    free(curr);
     fclose(input);
     fclose(output);
 
@@ -154,6 +155,7 @@ void decompress(const char* compressedFile, const char* outputFile) {
             fprintf(output, "%s ", word);
         }
     }
+    free(curr);
     fclose(input);
     fclose(output);
     printf("File decompressed successfully.\n");
