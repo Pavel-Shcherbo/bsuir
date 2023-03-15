@@ -18,7 +18,7 @@ Node* createNode(const char* word) {
     return node;
 }
 
-void insertNode(Node** head, char* word) {
+void insertNode(Node** head, const char* word) {
     Node* curr = *head;
     Node* prev = NULL;
     while (curr != NULL) {
@@ -56,7 +56,7 @@ void freeList(Node* head) {
     }
 }
 
-void compress(char* inputFile, char* compressedFile) {
+void compress(char* inputFile, const char* compressedFile) {
     FILE* input = fopen(inputFile, "r");
     if (input == NULL) {
         printf("Error opening input file\n");
@@ -104,7 +104,7 @@ void compress(char* inputFile, char* compressedFile) {
     printf("File compressed successfully.\n");
 }
 
-void decompress(char* compressedFile, char* outputFile) {
+void decompress(char* compressedFile, const char* outputFile) {
     FILE* input = fopen(compressedFile, "r");
     if (input == NULL) {
         printf("Error opening input file\n");
@@ -153,9 +153,9 @@ void decompress(char* compressedFile, char* outputFile) {
 }
 
 int main() {
-    char inputFileName[] = "input.txt";
-    char compressedFileName[] = "compressed.txt";
-    char decompressedFileName[] = "decompressed.txt";
+    char inputFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/input.txt";
+    char compressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/compressed.txt";
+    char decompressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/decompressed.txt";
     compress(inputFileName, compressedFileName);
     decompress(compressedFileName, decompressedFileName);
     return 0;
