@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF655E8429D36BEB004A5FBA /* functions.c in Sources */ = {isa = PBXBuildFile; fileRef = BF655E8329D36BEB004A5FBA /* functions.c */; };
 		BFC08BC829C146AD0011586B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BFC08BC729C146AD0011586B /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +24,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF04FB9429DE24C50035C8DB /* text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = text.txt; sourceTree = "<group>"; };
+		BF655E8229D36BEB004A5FBA /* functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
+		BF655E8329D36BEB004A5FBA /* functions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = functions.c; sourceTree = "<group>"; };
 		BFC08BC429C146AD0011586B /* lab_2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab_2; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC08BC729C146AD0011586B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		BFC08BCE29C147040011586B /* input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
-		BFC08BCF29C147130011586B /* compressed.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = compressed.txt; sourceTree = "<group>"; };
-		BFC08BD029C147220011586B /* decompressed.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = decompressed.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +61,10 @@
 		BFC08BC629C146AD0011586B /* lab_2 */ = {
 			isa = PBXGroup;
 			children = (
+				BF04FB9429DE24C50035C8DB /* text.txt */,
 				BFC08BC729C146AD0011586B /* main.c */,
-				BFC08BD029C147220011586B /* decompressed.txt */,
-				BFC08BCF29C147130011586B /* compressed.txt */,
-				BFC08BCE29C147040011586B /* input.txt */,
+				BF655E8229D36BEB004A5FBA /* functions.h */,
+				BF655E8329D36BEB004A5FBA /* functions.c */,
 			);
 			path = lab_2;
 			sourceTree = "<group>";
@@ -95,7 +96,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					BFC08BC329C146AD0011586B = {
 						CreatedOnToolsVersion = 14.2;
@@ -126,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFC08BC829C146AD0011586B /* main.c in Sources */,
+				BF655E8429D36BEB004A5FBA /* functions.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +167,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -223,6 +226,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -245,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -253,6 +258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

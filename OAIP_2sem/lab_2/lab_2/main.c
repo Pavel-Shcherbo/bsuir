@@ -1,171 +1,201 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "functions.h"
 
-#define MAX_WORD_LENGTH 50
-
-typedef struct Node {
-    char word[MAX_WORD_LENGTH];
-    int count;
-    struct Node* next;
-} Node;
-
-Node* createNode(const char* word) {
-    Node* node = (Node*)malloc(sizeof(Node));
-    strcpy(node->word, word);
-    node->count = 1;
-    node->next = NULL;
-    return node;
-}
-
-void insertNode(Node** head, const char* word) {
-    Node* curr = *head;
-    Node* prev = NULL;
-    while (curr != NULL) {
-        if (strcmp(curr->word, word) == 0) {
-            curr->count++;
-            return;
-        }
-        prev = curr;
-        curr = curr->next;
+int main(void)
+{
+    struct stack* st1;
+    struct stack* st2;
+    st1 = (struct stack*)calloc(1, sizeof(struct stack));
+    st2 = (struct stack*)calloc(1, sizeof(struct stack));
+    if (st1 != NULL)
+    {
+        st1[0].count = 0;
+        st1[0].words = (char**)calloc(1, sizeof(char*));
     }
-    Node* node = createNode(word);
-    if (prev == NULL) {
-        *head = node;
-    } else {
-        prev->next = node;
+    if (st2 != NULL)
+    {
+        st2[0].count = 0;
+        st2[0].words = (char**)calloc(1, sizeof(char*));
     }
-}
+    int n=0;
+    int a = 0;
+    FILE* file;
+    FILE* fp;
+    FILE* f;
+    char buffer[256];
+    file = fopen("text.txt", "r");
+    if (file != NULL)
+    {
+        while (!feof(file))
+        {
+            fscanf(file, "%255s", buffer);
 
-void printList(Node* head) {
-    printf("Word\tCount\n");
-    printf("----\t-----\n");
-    Node* curr = head;
-    while (curr != NULL) {
-        printf("%s\t%d\n", curr->word, curr->count);
-        curr = curr->next;
-    }
-}
-
-void freeList(Node* head) {
-    Node* curr = head;
-    while (curr != NULL) {
-        Node* temp = curr;
-        curr = curr->next;
-        free(temp);
-    }
-}
-
-void compress(const char* inputFile, const char* compressedFile) {
-    FILE* input = fopen(inputFile, "r");
-
-    if (input == NULL) {
-        printf("Error opening input file\n");
-        return;
-    }
-    FILE* output = fopen(compressedFile, "w");
-
-    if (output == NULL) {
-        printf("Error opening output file\n");
-        fclose(input);
-        return;
-    }
-    Node* longWord = NULL;
-    Node* shortWord = NULL;
-    char word[MAX_WORD_LENGTH];
-
-    while (fscanf(input, "%s", word) == 1) {
-        insertNode(&longWord, word);
-        insertNode(&shortWord, word);
-    }
-    Node* curr = longWord;
-
-    while (curr != NULL) {
-        if (curr->count > longWord->count) {
-            longWord = curr;
-        }
-        curr = curr->next;
-    }
-    curr = shortWord;
-
-    while (curr != NULL) {
-        if (curr->count < shortWord->count) {
-            shortWord = curr;
-        }
-        curr = curr->next;
-    }
-    fseek(input, 0, SEEK_SET);
-
-    while (fscanf(input, "%s", word) == 1) {
-        if (strcmp(word, longWord->word) == 0) {
-            fprintf(output, "%s ", shortWord->word);
-        } else if (strcmp(word, shortWord->word) == 0) {
-            fprintf(output, "%s ", longWord->word);
-        } else {
-            fprintf(output, "%s ", word);
+            char ignoree[16] = ",.;*:!?()[]\" ";
+            char *istr = calloc(256, sizeof(char));
+            istr = strtok(buffer, ignoree);
+            if (st1 != NULL)
+            {
+                push(st1, istr, n, a);
+                n++;
+            }
+            istr = NULL;
+            free(istr);
+            for (int i = 0; i < 256; i++) {
+                buffer[i] = 0;
+            }
         }
     }
-    free(curr);
-    fclose(input);
-    fclose(output);
+    else {
+        printf("try again\n");
+        return 0;
+    }
+    fclose(file);
 
-    printf("File compressed successfully.\n");
-}
+    struct words* word;
+    word = (struct words*)calloc(1, sizeof(struct words));
+    int kol = 0;
 
-void decompress(const char* compressedFile, const char* outputFile) {
-    FILE* input = fopen(compressedFile, "r");
-    if (input == NULL) {
-        printf("Error opening input file\n");
-        return;
+    if (st1 != NULL)
+    {
+        int t = st1[0].count;
+        st1[0].count = t;
     }
-    FILE* output = fopen(outputFile, "w");
-    if (output == NULL) {
-        printf("Error opening output file\n");
-        fclose(input);
-        return;
-    }
-    Node* longWord = NULL;
-    Node* shortWord = NULL;
-    char word[MAX_WORD_LENGTH];
-        while (fscanf(input, "%s", word) == 1) {
-        insertNode(&longWord, word);
-        insertNode(&shortWord, word);
-    }
-    Node* curr = longWord;
-    while (curr != NULL) {
-        if (curr->count > longWord->count) {
-            longWord = curr;
-        }
-    curr = curr->next;
-    }
-    curr = shortWord;
-    while (curr != NULL) {
-        if (curr->count < shortWord->count) {
-            shortWord = curr;
-        }
-        curr = curr->next;
-    }
-    fseek(input, 0, SEEK_SET);
-    while (fscanf(input, "%s", word) == 1) {
-        if (strcmp(word, longWord->word) == 0) {
-            fprintf(output, "%s ", shortWord->word);
-        } else if (strcmp(word, shortWord->word) == 0) {
-            fprintf(output, "%s ", longWord->word);
-        } else {
-            fprintf(output, "%s ", word);
-        }
-    }
-    free(curr);
-    fclose(input);
-    fclose(output);
-    printf("File decompressed successfully.\n");
-}
 
-int main() {
-    char inputFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/input.txt";
-    char compressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/compressed.txt";
-    char decompressedFileName[] = "/Users/pavelshcherbo/Desktop/bsuir/OAIP_2sem/lab_2/lab_2/decompressed.txt";
-    compress(inputFileName, compressedFileName);
-    decompress(compressedFileName, decompressedFileName);
+    if (st2 != NULL && st1 != NULL) {
+        while (st1[0].count > 0 || st2[0].count > 0)
+        {
+            int cnt;
+
+            if (st1[0].count >= 0)
+            {
+                if (st1 != NULL) {
+                    st1[0].count--;
+                }
+
+                char* inhight;
+                inhight = top(st1);
+                st2[0].count = 0;
+                cnt = separate_and_count_matching_items(st1, st2, inhight,n,a);
+
+                if (word != NULL)
+                {
+                    makeStruct(word, inhight, cnt, kol);
+                    kol++;
+                    struct words* ptr;
+                    ptr = (struct words*)realloc(word, (kol + 1) * sizeof(struct words));
+                    if (ptr != NULL)
+                    {
+                        word = ptr;
+                    }
+                    ptr = NULL;
+                    free(ptr);
+                    ptr = NULL;
+                }
+                inhight = NULL;
+                free(inhight);
+                inhight = NULL;
+                a++;
+            }
+            else {
+                if (st2[0].count >= 0) {
+                    if (st2[0].words != NULL)
+                    {
+                        if (st2 != NULL) {
+                            st2[0].count--;
+                        }
+                        char* inhight2;
+                        inhight2 = top(st2);
+                        st1[0].count = 0;
+                        cnt = separate_and_count_matching_items(st2, st1, inhight2, n,a);
+
+                        if (word != NULL)
+                        {
+                            makeStruct(word, inhight2, cnt, kol);
+                            kol++;
+                            struct words* ptr;
+                            ptr = (struct words*)realloc(word, (kol + 1) * sizeof(struct words));
+                            if (ptr != NULL)
+                            {
+                                word = ptr;
+                            }
+                            ptr = NULL;
+                            free(ptr);
+                            ptr = NULL;
+                        }
+                        inhight2 = NULL;
+                        free(inhight2);
+                        inhight2 = NULL;
+                    }
+                }
+            }
+        }
+    }
+
+    freeMemory(st1, st2, n);
+    
+    qsort(word, kol, sizeof(struct words), allSort);
+
+    struct change* temp;
+    temp = (struct change*)malloc(1 * sizeof(struct change));
+
+    int ind = 0;
+    int s = 0, l = kol - 1;
+    if (word != NULL) {
+        while (s != l) {
+            if (word[l].lenght > word[s].lenght && word[l].num > word[s].num) {
+                temp[ind].word1 = (char*)calloc(word[l].lenght + 1, sizeof(char));
+                strcpy(temp[ind].word1, word[l].wrdd);
+
+                temp[ind].word2 = (char*)calloc(word[s].lenght + 1, sizeof(char));
+                strcpy(temp[ind].word2, word[s].wrdd);
+
+                int free_memory = (word[l].lenght * word[l].num) + (word[s].lenght * word[s].num);
+                int need_memory = (word[s].lenght * word[s].num) + (word[l].lenght * word[l].num)+(word[l].lenght + word[s].lenght + 1);
+
+                if (free_memory <= need_memory)
+                {
+                    l--;
+                    continue;
+                }
+
+                ind++;
+                struct change* ptr;
+                ptr = (struct imp*)realloc(temp, (ind + 1) * sizeof(struct change));
+                if (ptr != NULL)
+                {
+                    temp = ptr;
+                }
+                s++;
+                ptr = NULL;
+                free(ptr);
+                ptr = NULL;
+            }
+            l--;
+        }
+    }
+
+
+    f = fopen("text.txt", "r");
+    fp = fopen("ziper.txt", "w");
+
+    if (f != NULL) {
+        finaly(f, fp, temp, ind);
+        fclose(f);
+    }
+    else {
+        return 0;
+    }
+    fprintf(fp, "\n/\n");
+    for (int i = 0; i < ind; i++) {
+        fprintf(fp, "%s ", temp[i].word1);
+        fprintf(fp, "%s ", temp[i].word2);
+    }
+    fclose(f);
+    fclose(fp);
+    free(word);
+    word = NULL;
+    free(temp);
+    temp = NULL;
+    printf("DONEE\n");
     return 0;
 }
+
