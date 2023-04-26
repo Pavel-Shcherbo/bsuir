@@ -1,0 +1,47 @@
+is it human?
+is it device
+is it mobile
+is it animal
+
+Apple
+NULL
+NULL
+is it brown
+tomato
+NULL
+NULL
+potatoe
+NULL
+NULL
+horse
+NULL
+NULL
+phone
+NULL
+NULL
+is it phone
+laptop
+NULL
+NULL
+iphone
+NULL
+NULL
+he create Tesla
+smartest of all time
+is it programmer?
+Artem
+NULL
+NULL
+is it big fan of OAIP
+Pavel Durov
+NULL
+NULL
+matvei
+NULL
+NULL
+Dima Vasilevich
+NULL
+NULL
+Elon Musk
+NULL
+NULL
