@@ -29,7 +29,7 @@ void createVacuumCleaners(VacuumCleaner vcArray[], int* size) {
         for (int j = 0; j < *size; j++) {
             if (vcArray[j].productCode == productCode) {
                 codeExists = 1;
-                printf("Product code %d already exists.\n", productCode);
+                printf("Product code %d already exists\n", productCode);
                 break;
             }
         }
