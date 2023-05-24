@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main() {
+int main(void) {
     VacuumCleaner vcArray[100];
     int vcArraySize = 0;
 

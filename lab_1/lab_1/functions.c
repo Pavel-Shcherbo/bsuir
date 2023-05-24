@@ -3,7 +3,7 @@
 #include "functions.h"
 #include <stdbool.h>
 
-bool isValidInput() {
+bool isValidInput(void) {
     char c;
     while ((c = getchar()) != '\n' && c != EOF);
     return true;
