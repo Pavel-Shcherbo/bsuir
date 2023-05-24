@@ -8,7 +8,11 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        project: [lab_1/lab_1.xcodeproj, lab_3/lab_3.xcodeproj, compressor/compressor.xcodeproj, akinator/akinator.xcodeproj, dns/dns.xcodeproj]
+        os: [macos-12]
+    runs-on: ${{ matrix.os }}
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
     steps:
@@ -19,7 +23,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@v1
       - name: Run build-wrapper
         run: |
-          build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} xcodebuild -project OAIP_2sem/lab_2/lab_2.xcodeproj
+          build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} xcodebuild -project ${{ matrix.project }}
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
