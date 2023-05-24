@@ -8,15 +8,15 @@ int main(void) {
 
     int choice = -1;
     while (choice != 0) {
-        printf("1. Create vacuum cleaners\n");
-        printf("2. Display vacuum cleaners\n");
-        printf("3. Remove a vacuum cleaner\n");
-        printf("4. Sort by product code\n");
-        printf("5. Sort by name\n");
-        printf("6. Sort by color\n");
-        printf("7. Sort by price\n");
-        printf("8. Sort by two fields\n");
-        printf("0. Exit\n");
+        printf("1. Create vacuum cleaners.\n");
+        printf("2. Display vacuum cleaners.\n");
+        printf("3. Remove a vacuum cleaner.\n");
+        printf("4. Sort by product code.\n");
+        printf("5. Sort by name.\n");
+        printf("6. Sort by color.\n");
+        printf("7. Sort by price.\n");
+        printf("8. Sort by two fields.\n");
+        printf("0. Exit.\n");
         printf("Enter your choice: ");
         int result = scanf("%d", &choice);
         if (result != 1) {
