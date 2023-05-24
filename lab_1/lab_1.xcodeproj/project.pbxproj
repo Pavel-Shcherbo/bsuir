@@ -28,7 +28,6 @@
 		BF943D4529AE703900C2A15C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		BF943D4C29AE8BFF00C2A15C /* functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
 		BF943D4D29AE8BFF00C2A15C /* functions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = functions.c; sourceTree = "<group>"; };
-		BF943D4F29AF2ED600C2A15C /* cleaner.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = cleaner.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +63,6 @@
 				BF943D4529AE703900C2A15C /* main.c */,
 				BF943D4C29AE8BFF00C2A15C /* functions.h */,
 				BF943D4D29AE8BFF00C2A15C /* functions.c */,
-				BF943D4F29AF2ED600C2A15C /* cleaner.html */,
 			);
 			path = lab_1;
 			sourceTree = "<group>";

@@ -39,7 +39,7 @@ void createVacuumCleaners(VacuumCleaner vcArray[], int* size) {
         }
         vcArray[*size].productCode = productCode;
         printf("Name: ");
-        scanf("%s", vcArray[*size].name);
+        scanf("%9s", vcArray[*size].name);
         printf("Color (0=RED, 1=BLUE, 2=GREEN, 3=YELLOW, 4=PURPLE): ");
         int color;
         while (scanf("%d", &color) != 1 || color < 0 || color > 4) {
