@@ -1,368 +1,434 @@
+#include "functions.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "functions.h"
+#include <ctype.h>
 
-#define SIZE_HASH 3
-#define SIZE 256
-#define IP_SIZE 16
-#define SIZE_TO_CLEAR_CACHE 3
-
-struct HashTable* ht;
-
-struct QueueNode* createQueueNode(struct Hash* data) {
-    struct QueueNode* node = (struct QueueNode*)malloc(sizeof(struct QueueNode));
-    node->data = data;
-    node->next = NULL;
-    return node;
-}
-
-struct Queue* createQueue(void) {
-    struct Queue* queue = (struct Queue*)malloc(sizeof(struct Queue));
-    queue->front = NULL;
-    queue->rear = NULL;
-    return queue;
-}
-
-void enqueue(struct Queue* queue, struct Hash* data) {
-    struct QueueNode* node = createQueueNode(data);
-    if (queue->rear == NULL) {
-        queue->front = node;
-        queue->rear = node;
+void addElement(hash_table_t* hash_table, cache_t* cache) {
+    char s[MAX_LINE_LENGTH];
+    printf("Введите элемент для добавления: ");
+    rewind(stdin);
+    fgets(s, MAX_LINE_LENGTH, stdin);
+    s[strlen(s) - 1] = '\0';
+    char* value = getFromCache(cache, hash_table, s);
+    if (value != NULL) {
+        printf("Элемент уже существует в кэше.\n");
     } else {
-        queue->rear->next = node;
-        queue->rear = node;
+        value = getIP(hash_table, s);
+        
+        if (value != NULL) {
+            addToCache(cache, hash_table, s, value);
+            printf("Элемент успешно добавлен в кэш.\n");
+        } else {
+            printf("Элемент не найден в файле.\n");
+            printf("Если вы хотите добавить его, введите 1.\n");
+            printf("Если вы хотите ввести другой элемент, введите 2.\n");
+            printf("Если вы хотите перезапустить, введите 3.\n");
+            
+            int option = 0;
+            scanf("%d", &option);
+            
+            switch (option) {
+                case 1:
+                    addDomainToFile(s);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    printf("Введите ваш выбор: ");
+                    return;
+                default:
+                    printf("Неверный выбор. Попробуйте еще раз.\n");
+                    break;
+            }
+        }
     }
 }
 
-struct Hash* dequeue(struct Queue* queue) {
-    if (queue->front == NULL) {
-        return NULL;
+char* validIP(void) {
+    char s[MAX_LINE_LENGTH];
+    while (1) {
+        rewind(stdin);
+        fgets(s, MAX_LINE_LENGTH, stdin);
+        s[strlen(s) - 1] = '\0';
+        int i = 0;
+        int sum = 0;
+        int fl = 1;
+        int point = 0;
+        while (s[i] != '\0') {
+            if ((s[i] < '0' || s[i] > '9') && s[i] != '.') {
+                fl = 0;
+                printf("Введите корректный IP адресс\n");
+                break;
+            }
+            else {
+                sum *= 10;
+                sum += s[i] - 48;
+                if (s[i + 1] == '.') {
+                    if (sum > 255) {
+                        printf("Число может быть до 255!\n");
+                        fl = 0;
+                        break;
+                    }
+                    point++;
+                    if (point > 3) {
+                        printf("IP адресс должен быть написан в формате 255.255.255.255\n");
+                        fl = 0;
+                        break;
+                    }
+                    sum = 0;
+                }
+            }
+            i++;
+        }
+        if (point < 3 && fl != 0) {
+            printf("IP адресс должен быть написан в формате 255.255.255.255\n");
+            fl = 0;
+            break;
+        }
+        if (fl == 0) {
+            printf("Введите IP адресс: ");
+            rewind(stdin);
+        }
+        else {
+            break;
+        }
     }
-    struct QueueNode* temp = queue->front;
-    struct Hash* data = temp->data;
-    queue->front = queue->front->next;
-    if (queue->front == NULL) {
-        queue->rear = NULL;
+    return strdup(s);
+}
+
+void addDomainToFile(char* domain) {
+    FILE* file = fopen("dns.txt", "r+");
+    char s[MAX_LINE_LENGTH];
+    rewind(stdin);
+    printf("Это домен или второе название?(1 или 2): ");
+    fgets(s, MAX_LINE_LENGTH, stdin);
+    s[strlen(s) - 1] = '\0';
+    if (strcmp(s, "1") == 0) {
+        strncat(domain, " IN A ", 7);
+        rewind(stdin);
+        printf("Введите IP адресс: ");
+        strcpy(s, validIP());
+        s[strlen(s) - 1] = '\0';
+        strncat(domain, s, MAX_LINE_LENGTH);
+    }
+    else {
+        strncat(domain, " IN CNAME ", 11);
+        rewind(stdin);
+        printf("Введите домен: ");
+        fgets(s, MAX_LINE_LENGTH, stdin);
+        s[strlen(s) - 1] = '\0';
+        strncat(domain, s, MAX_LINE_LENGTH);
+    }
+    fseek(file, 0, SEEK_END);
+    fputs("\n", file);
+    fputs(domain, file);
+    fclose(file);
+}
+
+void findDomain(char* IP) {
+    FILE* file = fopen("dns.txt", "r");
+    char s[MAX_LINE_LENGTH];
+    fseek(file, 0, SEEK_SET);
+    int fl = 0;
+    char domain[MAX_LINE_LENGTH];
+    rewind(stdin);
+    while (fgets(s, MAX_LINE_LENGTH, file)) {
+        char* buf;
+        buf = strtok(s, " \n");
+        strcpy(domain, buf);
+        buf = strtok(NULL, " \n");
+        buf = strtok(NULL, " \n");
+        if (strcmp(buf, "A") == 0) {
+            buf = strtok(NULL, " \n");
+            if (strcmp(buf, IP) == 0) {
+                fl = 1;
+                break;
+            }
+        }
+    }
+    if (fl == 0) {
+        printf("Этого IP нет в файле\n");
+        return;
+    }
+    printf("Домен: %s\n", domain);
+    fseek(file, 0, SEEK_SET);
+    rewind(stdin);
+    while (fgets(s, MAX_LINE_LENGTH, file)) {
+        char* buf;
+        char canonical[MAX_LINE_LENGTH];
+        buf = strtok(s, " \n");
+        strcpy(canonical, buf);
+        buf = strtok(NULL, " \n");
+        buf = strtok(NULL, " \n");
+        if (strcmp(buf, "CNAME") == 0) {
+            buf = strtok(NULL, " \n");
+            if (strcmp(buf, domain) == 0) {
+                printf("Канонический вид: %s\n", canonical);
+            }
+        }
+    }
+}
+
+void freeMemory(cache_t* cache, hash_table_t* hash_table) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        hashNode_t* hash_node = hash_table->table[i];
+        while (hash_node != NULL) {
+            hashNode_t* temp = hash_node;
+            hash_node = hash_node->next;
+            free(temp);
+        }
+    }
+    free(hash_table->table);
+
+    cacheNode_t* cache_node = cache->head;
+    while (cache_node != NULL) {
+        cacheNode_t* temp = cache_node;
+        cache_node = cache_node->next;
+        free(temp);
+    }
+}
+
+char* getIP(hash_table_t* hash_table, char* key) {
+    int index = hashFunction(key);
+    hashNode_t* hash_node = hash_table->table[index];
+    while (hash_node != NULL) {
+        if (strcmp(hash_node->key, key) == 0) {
+            return hash_node->value;
+        }
+        hash_node = hash_node->next;
+    }
+    return NULL;
+}
+
+
+cacheNode_t* createNode(char* key, char* value) {
+    cacheNode_t* new_node = (cacheNode_t*)malloc(sizeof(cacheNode_t));
+    strcpy(new_node->key, key);
+    strcpy(new_node->value, value);
+    new_node->next = NULL;
+    new_node->prev = NULL;
+    return new_node;
+}
+
+
+void addNodeToHead(cache_t* cache, cacheNode_t* node) {
+    node->next = cache->head;
+    node->prev = NULL;
+    if (cache->head != NULL) {
+        cache->head->prev = node;
+    }
+    else {
+        cache->tail = node;
+    }
+    cache->head = node;
+}
+
+void removeTail(cache_t* cache) {
+    cacheNode_t* temp = cache->tail;
+    cache->tail = cache->tail->prev;
+    if (cache->tail != NULL) {
+        cache->tail->next = NULL;
+    }
+    else {
+        cache->head = NULL;
     }
     free(temp);
-    return data;
 }
 
-int isEmpty(struct Queue* queue) {
-    return queue->front == NULL;
-}
-
-int validateIP(const char* ip) {
-    if (ip == NULL) {
-        return 0;
-    }
-    int nums[4];
-    int cnt = sscanf(ip, "%d.%d.%d.%d", &nums[0], &nums[1], &nums[2], &nums[3]);
-    if (cnt != 4) {
-        return 0;
-    }
-    for (int i = 0; i < 4; i++) {
-        if (nums[i] < 0 || nums[i] > 255) {
-            return 0;
+void addToCache(cache_t* cache, hash_table_t* hash_table, char* key, char* value) {
+    cacheNode_t* new_node = createNode(key, value);
+    addNodeToHead(cache, new_node);
+    cache->size++;
+    if (cache->size > cache->capacity) {
+        hashNode_t* hash_node = hash_table->table[hashFunction(cache->tail->key)];
+        if (strcmp(hash_node->key, cache->tail->key) == 0) {
+            hash_table->table[hashFunction(cache->tail->key)] = hash_node->next;
         }
+        else {
+            while (hash_node->next != NULL && strcmp(hash_node->next->key, cache->tail->key) != 0) {
+                hash_node = hash_node->next;
+            }
+            if (hash_node->next != NULL) {
+                hashNode_t* temp = hash_node->next;
+                hash_node->next = temp->next;
+                free(temp);
+            }
+        }
+        removeTail(cache);
+        cache->size--;
     }
-    return 1;
+    hashNode_t* hash_node = hash_table->table[hashFunction(key)];
+    while (hash_node->next != NULL && strcmp(hash_node->next->key, key) != 0) {
+        hash_node = hash_node->next;
+    }
+    if (hash_node->next != NULL) {
+        free(hash_node->next);
+    }
+    hash_node->next = createHashNode(key, value);
+    hash_table->size++;
 }
 
-unsigned int generateHash(const char* str) {
-    unsigned int hash = 0;
-    for (int i = 0; str[i] != '\0'; i++) {
-        hash = hash * 31 + str[i];
+char* getFromCache(cache_t* cache, hash_table_t* hash_table, char* key) {
+    hashNode_t* hash_node = hash_table->table[hashFunction(key)];
+    while (hash_node != NULL && strcmp(hash_node->key, key) != 0) {
+        hash_node = hash_node->next;
     }
-    return hash % SIZE_HASH;
+    if (hash_node == NULL) {
+        return NULL;
+    }
+    cacheNode_t* cache_node = cache->head;
+    while (cache_node != NULL && strcmp(cache_node->key, key) != 0) {
+        cache_node = cache_node->next;
+    }
+    if (cache_node == NULL) {
+        return NULL;
+    }
+    if (cache_node != cache->head) {
+        if (cache_node == cache->tail) {
+            cache->tail = cache_node->prev;
+            cache->tail->next = NULL;
+        }
+        else {
+            cache_node->prev->next = cache_node->next;
+            cache_node->next->prev = cache_node->prev;
+        }
+        addNodeToHead(cache, cache_node);
+    }
+    return cache_node->value;
 }
 
-void insertIntoHashTable(struct HashTable* ht, char* domain, char* ip) {
-    int index = generateHash(domain);
-    if (ht->table[index] == NULL) {
-        struct Hash* h = malloc(sizeof(struct Hash));
-        h->domain = strdup(domain);
-        h->ip = strdup(ip);
-        h->cname = NULL;
-        h->prev = NULL;
-        h->next = NULL;
-        ht->table[index] = h;
-        ht->tail[index] = h;
-    } else {
-        struct Hash* h = ht->table[index];
-        while (h != NULL) {
-            if (strcmp(h->domain, domain) == 0) {
-                if (h->cname != NULL) {
-                    free(h->cname);
-                    h->cname = NULL;
+void printCache(cache_t* cache) {
+    cacheNode_t* current_node = cache->head;
+    printf("Cache:\n");
+    while (current_node != NULL) {
+        printf("%s %s\n", current_node->key, current_node->value);
+        current_node = current_node->next;
+    }
+}
+
+void initHashTable(hash_table_t* hash_table, cache_t* cache, char* s) {
+    FILE* file = fopen("dns.txt", "r");
+    char line[MAX_LINE_LENGTH];
+    char key[MAX_LINE_LENGTH];
+    char value[MAX_LINE_LENGTH];
+    char* token;
+    while (fgets(line, MAX_LINE_LENGTH, file)) {
+        token = strtok(line, " \n");
+        strcpy(key, token);
+        if (strcmp(s,key)== 0){
+            token = strtok(NULL, " \n");
+            token = strtok(NULL, " \n");
+            if (strcmp(token, "A") == 0) {
+                token = strtok(NULL, " \n");
+                strcpy(value, token);
+                hashNode_t* new_node = createHashNode(key, value);
+                int hash = hashFunction(key);
+                new_node->next = hash_table->table[hash];
+                hash_table->table[hash] = new_node;
+                hash_table->size++;
+            }
+            else {
+                if (strcmp(token, "CNAME") == 0) {
+                    token = strtok(NULL, " \n");
+                    initHashTable(hash_table, cache, token);
+                    char* IP = getIP(hash_table, token);
+                    hashNode_t* new_node = createHashNode(key, IP);
+                    int hash = hashFunction(key);
+                    new_node->next = hash_table->table[hash];
+                    hash_table->table[hash] = new_node;
                 }
-                free(h->ip);
-                h->ip = strdup(ip);
-                return;
-            }
-            h = h->next;
-        }
-        struct Hash* new_h = malloc(sizeof(struct Hash));
-        new_h->domain = strdup(domain);
-        new_h->ip = strdup(ip);
-        new_h->cname = NULL;
-        new_h->prev = NULL;
-        new_h->next = ht->table[index];
-        ht->table[index]->prev = new_h;
-        ht->table[index] = new_h;
-        if (ht->count >= SIZE_TO_CLEAR_CACHE - 1) {
-            struct Hash* last_h = ht->tail[index];
-            ht->tail[index] = last_h->prev;
-            ht->tail[index]->next = NULL;
-            freeHash(last_h);
-        } else {
-            ht->count++;
-        }
-    }
-}
-
-
-
-void writeToFile(char* filename, char* domain, char* ip) {
-    FILE* fp = fopen(filename, "a");
-    if (fp == NULL) {
-        printf("Error opening file %s\n", filename);
-        exit(1);
-    }
-    fprintf(fp, "%s IN A %s\n", domain, ip);
-    fclose(fp);
-}
-
-void checkForTypeTwoElement(char* newDomain) {
-    FILE* fp = fopen("dns.txt", "r");
-    if (fp == NULL) {
-        printf("Error opening file\n");
-        return;
-    }
-    char str[SIZE];
-    char domain[SIZE];
-    char cname[SIZE];
-    while (fgets(str, SIZE, fp) != NULL) {
-        if (sscanf(str, "%s IN CNAME %s", domain, cname) == 2) {
-            domain[strlen(domain)] = '\0';
-            if (strcmp(domain, newDomain) == 0) {
-                cname[strlen(cname)] = '\0';
-                strcpy(newDomain, cname);
             }
         }
+
     }
-    fclose(fp);
+    fclose(file);
 }
 
-
-void handleMissingElement(int count, char* newDomain) {
-    if (count == 0) {
-        printf("Доменное имя не найдено\n");
-        printf("Добавить в DNS?\n");
-        printf("1. Да\n");
-        printf("2. Нет\n");
-        int choice;
-        fflush(stdin);
-        scanf("%d", &choice);
-        getchar();
-        while (choice != 1 && choice != 2) {
-            printf("Попробуй еще!\n");
-            scanf("%d", &choice);
-        }
-        if (choice == 2) {
-            printf("Введите доменное имя: ");
-            scanf("%s", newDomain);
-        }
-        if (choice == 1) {
-            char* ip = malloc(16);
-            do {
-                printf("IP: ");
-                fflush(stdin);
-                fgets(ip, 16, stdin);
-            } while (!validateIP(ip));
-            writeToFile("dns.txt", newDomain, ip);
-            
-            insertIntoHashTable(ht, newDomain, ip);
-        }
-    }
+hashNode_t* createHashNode(char* key, char* value) {
+    hashNode_t* new_node = (hashNode_t*)malloc(sizeof(hashNode_t));
+    strcpy(new_node->key, key);
+    strcpy(new_node->value, value);
+    new_node->next = NULL;
+    return new_node;
 }
 
-void readFromFile(struct HashTable* ht, char* newDomain) {
-    int count = 0;
-    int counter = 0;
-    FILE* fp = fopen("dns.txt", "r");
-    if (fp == NULL) {
-        printf("Error opening file\n");
-        return;
+int hashFunction(char* key) {
+    int hash = 0;
+    for (int i = 0; i < strlen(key); i++) {
+        hash += key[i];
     }
-    char line[SIZE];
-    char domain[SIZE];
-    char domain2[SIZE];
-    char ip[IP_SIZE];
-    //char cnameDomain[SIZE];
-    checkForTypeTwoElement(newDomain);
-    fclose(fp);
-    fp = fopen("dns.txt", "r");
-    while (fgets(line, sizeof(line), fp) != NULL) {
-        if (sscanf(line, "%s IN A %s", domain, ip) == 2 && strcmp(domain, newDomain) == 0 &&
-            validateIP(ip) == 1) {
-            if (counter == 0) {
-                insertIntoHashTable(ht, newDomain, ip);
-            } else {
-                insertIntoHashTable(ht, domain2, ip);
-            }
-            count++;
-        }
-    }
-    handleMissingElement(count, newDomain);
-    fclose(fp);
+    return hash % TABLE_SIZE;
 }
 
-
-void printIPFromHashTable(struct HashTable* ht, char* newDomain) {
-    int count = 0;
-    int index = generateHash(newDomain);
-    struct Hash* h = ht->table[index];
-    while (h != NULL) {
-        if (strcmp(h->domain, newDomain) == 0) {
-            if (count == 0) {
-                printf("\n%s\n", h->ip);
-            }
-            count++;
-        }
-        h = h->next;
-    }
-    if (count == 0) {
-        readFromFile(ht, newDomain);
-        printIPFromHashTable(ht, newDomain);
-    }
-}
-
-
-void printHashTable(struct HashTable* ht) {
-    for (int i = 0; i < SIZE_HASH; i++) {
-        struct Hash* h = ht->table[i];
-        while (h != NULL) {
-            printf("%s IN A %s\n", h->domain, h->ip);
-            h = h->next;
-        }
-    }
-}
-
-
-void findDomainByIP(void) {
-    char needIP[16];
-    printf("Введите IP-адрес: ");
-    scanf("%15s", needIP);
-
-    FILE* fp = fopen("dns.txt", "r");
-    if (fp == NULL) {
-        printf("Ошибка при открытии файла\n");
-        return;
-    }
-    char line[SIZE];
-    char domain[SIZE];
-    char ip[16];
-    int count = 0;
-
-    while (fgets(line, sizeof(line), fp) != NULL) {
-        if (sscanf(line, "%s IN A %s", domain, ip) == 2 && strcmp(needIP, ip) == 0) {
-            printf("%s\n", domain);
-            count++;
-            if (count == 1) {
-                strcpy(needIP, domain);
-            }
-        } else if (sscanf(line, "%s IN CNAМЕ %s", domain, ip) == 2 && strcmp(needIP, ip) == 0) {
-            printf("%s\n", domain);
-        }
-    }
-    if (count == 0) {
-        printf("Ошибка: IP-адрес не найден в базе данных.\n");
-    }
-    fclose(fp);
-}
-
-
-void freeHash(struct Hash* node) {
-    if (node) {
-        free(node->domain);
-        free(node->ip);
-        free(node);
-    }
-}
-
-
-void deleteHashTable(struct HashTable* ht) {
-    if (ht) {
-        for (int i = 0; i < ht->size; ++i) {
-            struct Hash* current = ht->table[i];
-            while (current) {
-                struct Hash* next = current->next;
-                freeHash(current);
-                current = next;
-            }
-        }
-        free(ht->table);
-    }
-    ht->count = 0;
-}
-
-void addElementToHashTable(struct HashTable* ht) {
-    char* domain = malloc(SIZE * sizeof(char));
-    char* ip = malloc(IP_SIZE * sizeof(char));
-    printf("Введите доменное имя: ");
-    scanf("%s", domain);
-    
-    printf("Введите IP-адрес: ");
-    scanf("%s", ip);
-    
-    insertIntoHashTable(ht, domain, ip);
-    writeToFile("dns.txt", domain, ip);
-}
-
-void displayMenu(void) {
-    struct HashTable ht = {SIZE_HASH, calloc(SIZE_HASH, sizeof(struct Hash*)) };
-    char domain[SIZE];
+void menu(hash_table_t* hash_table, cache_t* cache) {
+    int fl = 1;
     int choice = 0;
-    while (choice != 5) {
+    
+    while (1) {
+        char s[MAX_LINE_LENGTH];
+        
         printf("\n----- Меню -----\n");
         printf("1. Добавить элемент\n");
-        printf("2. Найти IP-адрес по доменному имени\n");
+        printf("2. Ввести доменное имя для получения IP-адреса\n");
         printf("3. Показать таблицу\n");
-        printf("4. Найти доменное имя по IP-адресу\n");
+        printf("4. Ввести IP-адрес для получения доменного имени\n");
         printf("5. Выход\n");
         printf("-----------------\n");
         printf("Введите ваш выбор: ");
-        scanf("%d", &choice);
-        getchar();
-        switch (choice) {
-            case 1:
-                addElementToHashTable(&ht);
-                break;
-            case 2:
-                printf("Введите доменное имя: ");
-                scanf("%s", domain);
-                if (strstr(domain, "bsuir.by") != NULL) {
-                    insertIntoHashTable(&ht, domain, "192.168.251.23");
-                    printf("192.168.251.23");
-                } else {
-                    printIPFromHashTable(&ht, domain);
-                }
-
-                break;
-            case 3:
-                printHashTable(&ht);
-                break;
-            case 4:
-                findDomainByIP();
-                break;
-            case 5:
-                break;
-            default:
-                printf("Неверный выбор. Попробуйте еще раз.\n");
-                break;
+        
+        if (fl == 1) {
+            choice = 0;
+            scanf("%d", &choice);
+            rewind(stdin);
         }
+        
+        if (choice == 1) {
+            addElement(hash_table, cache);
+        }
+        
+        else if (choice == 2) {
+            printf("Введите доменное имя: ");
+            rewind(stdin);
+            fgets(s, MAX_LINE_LENGTH, stdin);
+            s[strlen(s) - 1] = '\0';
+            char* value = getFromCache(cache, hash_table, s);
+            
+            if (value != NULL) {
+                printf("IP-адрес: %s\n", value);
+            } else {
+                initHashTable(hash_table, cache, s);
+                char* IP = getIP(hash_table, s);
+                
+                if (IP != NULL) {
+                    addToCache(cache, hash_table, s, IP);
+                    value = getFromCache(cache, hash_table, s);
+                    printf("IP-адрес: %s\n", value);
+                } else {
+                    printf("Доменное имя не найдено.\n");
+                }
+            }
+        }
+        
+        else if (choice == 3) {
+            printCache(cache);
+        }
+        
+        else if (choice == 4) {
+            printf("Введите IP-адрес: ");
+            rewind(stdin);
+            fgets(s, MAX_LINE_LENGTH, stdin);
+            s[strlen(s) - 1] = '\0';
+            findDomain(s);
+        }
+        
+        else if (choice == 5) {
+            freeMemory(cache, hash_table);
+            break;
+        }
+        else{
+            printf("Неверный выбор");
+        }
+        fl = 1;
     }
-    deleteHashTable(&ht);
 }

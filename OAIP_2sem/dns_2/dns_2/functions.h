@@ -1,4 +1,5 @@
 #define MAX_LINE_LENGTH 256
+#define CACHE_SIZE 3
 #define TABLE_SIZE 16
 
 typedef struct cacheNode {
