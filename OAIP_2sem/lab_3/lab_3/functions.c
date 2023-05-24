@@ -216,5 +216,3 @@ void gammaCorrection(char* inputFileName, char* outputFileName, float gamma) {
     fclose(outputFile);
     free(pixels);
 }
-
-

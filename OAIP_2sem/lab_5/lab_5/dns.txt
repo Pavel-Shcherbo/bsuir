@@ -1,0 +1,6 @@
+google.com IN A 216.58.194.174
+facebook.com IN A 69.63.176.13
+github.com IN A 140.82.121.3
+stackoverflow.com IN A 151.101.1.69
+wikipedia.org IN A 208.80.154.224
+yahoo.com IN A 98.137.246.7
