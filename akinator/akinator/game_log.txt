@@ -1,0 +1,77 @@
+
+TIME : 2023-04-26 14:05:24 : YES : is it human?
+TIME : 2023-04-26 14:05:25 : YES : he create Tesla
+TIME : 2023-04-26 14:05:25 : YES : Elon Musk
+TIME : 2023-04-26 14:05:28 : NO : is it human?
+TIME : 2023-04-26 14:05:28 : YES : is it device
+TIME : 2023-04-26 14:05:29 : YES : laptop
+TIME : 2023-04-26 14:05:32 : NO : is it human?
+TIME : 2023-04-26 14:05:34 : NO : is it device
+TIME : 2023-04-26 14:05:34 : NO : is it mobile
+TIME : 2023-04-26 14:05:35 : NO : is it animal
+TIME : 2023-04-26 14:05:37 : NO : Apple
+TIME : 2023-04-26 14:05:45 : NEW ANSWER : tomato
+TIME : 2023-04-26 14:05:51 : DIFFERENCE : is it vegetable
+TIME : 2023-04-26 14:05:52 : NO : is it human?
+TIME : 2023-04-26 14:05:53 : NO : is it device
+TIME : 2023-04-26 14:05:54 : NO : is it mobile
+TIME : 2023-04-26 14:05:54 : NO : is it animal
+TIME : 2023-04-26 14:05:55 : YES : is it vegetable
+TIME : 2023-04-26 14:05:56 : NO : tomato
+TIME : 2023-04-26 14:06:01 : NEW ANSWER : potatoe
+TIME : 2023-04-26 14:06:07 : DIFFERENCE : is it brown
+TIME : 2023-04-26 14:06:09 : NO : is it human?
+TIME : 2023-04-26 14:06:10 : YES : is it device
+TIME : 2023-04-26 14:06:11 : YES : laptop
+TIME : 2023-04-26 14:06:12 : NO : is it human?
+TIME : 2023-04-26 14:06:13 : NO : is it device
+TIME : 2023-04-26 14:06:13 : NO : is it mobile
+TIME : 2023-04-26 14:06:14 : YES : is it animal
+TIME : 2023-04-26 14:06:14 : YES : horse
+TIME : 2023-04-26 14:08:58 : NO : is it human?
+TIME : 2023-04-26 14:08:59 : NO : is it device
+TIME : 2023-04-26 14:09:00 : NO : is it mobile
+TIME : 2023-04-26 14:09:00 : NO : is it animal
+TIME : 2023-04-26 14:09:39 : YES : is it human?
+TIME : 2023-04-26 14:09:40 : YES : he create Tesla
+TIME : 2023-04-26 14:09:40 : YES : Elon Musk
+TIME : 2023-04-26 14:10:49 : NO : is it human?
+TIME : 2023-04-26 14:10:49 : NO : is it device
+TIME : 2023-04-26 14:10:50 : NO : is it mobile
+TIME : 2023-04-26 14:10:50 : NO : is it animal
+TIME : 2023-04-26 14:11:43 : YES : is it human?
+TIME : 2023-04-26 14:11:43 : YES : he create Tesla
+TIME : 2023-04-26 14:11:43 : YES : Elon Musk
+TIME : 2023-04-26 14:16:55 : YES : is it human?
+TIME : 2023-04-26 14:16:56 : YES : he create Tesla
+TIME : 2023-04-26 14:16:56 : YES : Elon Musk
+TIME : 2023-04-26 14:17:09 : YES : is it human?
+TIME : 2023-04-26 14:17:10 : YES : he create Tesla
+TIME : 2023-04-26 14:17:10 : YES : Elon Musk
+TIME : 2023-04-26 14:29:52 : YES : is it human?
+TIME : 2023-04-26 14:29:53 : YES : he create Tesla
+TIME : 2023-04-26 14:29:53 : YES : Elon Musk
+TIME : 2023-04-26 14:33:48 : YES : is it human?
+TIME : 2023-04-26 14:33:51 : YES : he create Tesla
+TIME : 2023-04-26 14:33:52 : YES : Elon Musk
+TIME : 2023-04-26 14:42:13 : NO : is it human?
+TIME : 2023-04-26 14:42:15 : YES : is it device
+TIME : 2023-04-26 14:42:18 : NO : laptop
+TIME : 2023-04-26 14:42:23 : NEW ANSWER : iphone
+TIME : 2023-04-26 14:42:25 : DIFFERENCE : is it phone
+TIME : 2023-04-26 14:42:27 : YES : is it human?
+TIME : 2023-04-26 14:42:28 : NO : he create Tesla
+TIME : 2023-04-26 14:42:29 : NO : smartest of all time
+TIME : 2023-04-26 14:42:32 : YES : is it programmer?
+TIME : 2023-04-26 14:42:33 : NO : Pavel Durov
+TIME : 2023-04-26 14:42:37 : NEW ANSWER : matvei
+TIME : 2023-04-26 14:42:44 : DIFFERENCE : is it big fan of OAIP
+TIME : 2023-04-26 14:43:10 : YES : is it human?
+TIME : 2023-04-26 14:43:11 : NO : he create Tesla
+TIME : 2023-04-26 14:43:12 : NO : smartest of all time
+TIME : 2023-04-26 14:43:13 : YES : is it programmer?
+TIME : 2023-04-26 14:43:14 : YES : is it big fan of OAIP
+TIME : 2023-04-26 14:43:15 : YES : matvei
+TIME : 2023-05-24 22:14:37 : YES : is it human?
+TIME : 2023-05-24 22:14:37 : YES : he create Tesla
+TIME : 2023-05-24 22:14:37 : YES : Elon Musk

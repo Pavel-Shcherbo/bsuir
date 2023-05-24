@@ -1,2 +1,0 @@
-User input: yes | Time: 2023-04-26 02:51:30
-User choice: 1 | Time: 2023-04-26 02:51:35
