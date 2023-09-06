@@ -1,0 +1,1091 @@
+<HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Результат расчета</title>
+</head>
+<body>
+<center>
+<h1>Результаты минимизации булевой функции алгоритмом Рота.</h1>
+<h4><I>Copyright &copy; <A href="mailto:splinter@menja.net" title="">Splinter</A>, 2004.</I></h4>
+<br><br>
+<h4>Исходные данные
+<br>
+</h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>L<br></td>
+<td>N<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=8>
+<td>00101<br>01100<br>01101<br>01111<br>10110<br>11100<br>11110<br>11111<br></td>
+<td>xx0xx<br></td>
+</tr>
+</table>
+<hr>
+<h4>Поиск простых импликант.</h4>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>C0*C0<br></td>
+<td>00101<br></td>
+<td>01100<br></td>
+<td>01101<br></td>
+<td>01111<br></td>
+<td>10110<br></td>
+<td>11100<br></td>
+<td>11110<br></td>
+<td>11111<br></td>
+<td>xx0xx<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>00101<br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01100<br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01101<br></td>
+<td>0y101<br></td>
+<td>0110y<br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01111<br></td>
+<td><br></td>
+<td><br></td>
+<td>011y1<br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>10110<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11100<br></td>
+<td><br></td>
+<td>y1100<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11110<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>1y110<br></td>
+<td>111y0<br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11111<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>y1111<br></td>
+<td><br></td>
+<td><br></td>
+<td>1111y<br></td>
+<td>-<br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>xx0xx<br></td>
+<td>00y01<br></td>
+<td>01y00<br></td>
+<td>01y01<br></td>
+<td>01y11<br></td>
+<td>10y10<br></td>
+<td>11y00<br></td>
+<td>11y10<br></td>
+<td>11y11<br></td>
+<td>-<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=3>
+<td>A1<br></td>
+<td>0x101<br>00x01<br></td>
+<td>0110x<br>x1100<br>01x00<br></td>
+<td>011x1<br>01x01<br></td>
+<td>x1111<br>01x11<br></td>
+<td>1x110<br>10x10<br></td>
+<td>111x0<br>11x00<br></td>
+<td>1111x<br>11x10<br></td>
+<td>11x11<br></td>
+<td>&Oslash;<br></td>
+</tr>
+</table>
+<h5 align=left>A1 = {  0x101; 00x01; 0110x; x1100; 01x00; 011x1; 01x01; x1111; 01x11; 1x110; 10x10; 111x0; 11x00; 1111x; 11x10; 11x11  }</h5>
+<h5 align=left>Z0 = {  &Oslash;  }</h5>
+<h5 align=left>B1 = {  00101; 01100; 01101; 01111; 10110; 11100; 11110; 11111; xx0xx  }</h5>
+<h5 align=left>C1 = {  0x101; 00x01; 0110x; x1100; 01x00; 011x1; 01x01; x1111; 01x11; 1x110; 10x10; 111x0; 11x00; 1111x; 11x10; 11x11; xx0xx  }</h5>
+<hr>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>C1*C1<br></td>
+<td>0x101<br></td>
+<td>00x01<br></td>
+<td>0110x<br></td>
+<td>x1100<br></td>
+<td>01x00<br></td>
+<td>011x1<br></td>
+<td>01x01<br></td>
+<td>x1111<br></td>
+<td>01x11<br></td>
+<td>1x110<br></td>
+<td>10x10<br></td>
+<td>111x0<br></td>
+<td>11x00<br></td>
+<td>1111x<br></td>
+<td>11x10<br></td>
+<td>11x11<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0x101<br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>00x01<br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0110x<br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x1100<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01x00<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>011x1<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01x01<br></td>
+<td><br></td>
+<td>0yx01<br></td>
+<td><br></td>
+<td><br></td>
+<td>01x0y<br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x1111<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01x11<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>01xy1<br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>1x110<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>10x10<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>111x0<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11x00<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>y1x00<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>1111x<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11x10<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>1yx10<br></td>
+<td><br></td>
+<td>11xy0<br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11x11<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>y1x11<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>11x1y<br></td>
+<td>-<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>xx0xx<br></td>
+<td>0xy01<br></td>
+<td><br></td>
+<td>01y0x<br></td>
+<td>x1y00<br></td>
+<td><br></td>
+<td>01yx1<br></td>
+<td><br></td>
+<td>x1y11<br></td>
+<td><br></td>
+<td>1xy10<br></td>
+<td><br></td>
+<td>11yx0<br></td>
+<td><br></td>
+<td>11y1x<br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=2>
+<td>A2<br></td>
+<td>0xx01<br></td>
+<td>0xx01<br></td>
+<td>01x0x<br></td>
+<td>x1x00<br></td>
+<td>01x0x<br>x1x00<br></td>
+<td>01xx1<br></td>
+<td>01xx1<br></td>
+<td>x1x11<br></td>
+<td>x1x11<br></td>
+<td>1xx10<br></td>
+<td>1xx10<br></td>
+<td>11xx0<br></td>
+<td>11xx0<br></td>
+<td>11x1x<br></td>
+<td>11x1x<br></td>
+<td>&Oslash;<br></td>
+</tr>
+</table>
+<h5 align=left>A2 = {  0xx01; 01x0x; x1x00; 01xx1; x1x11; 1xx10; 11xx0; 11x1x  }</h5>
+<h5 align=left>Z1 = {  &Oslash;  }</h5>
+<h5 align=left>B2 = {  0x101; 00x01; 0110x; x1100; 01x00; 011x1; 01x01; x1111; 01x11; 1x110; 10x10; 111x0; 11x00; 1111x; 11x10; 11x11; xx0xx  }</h5>
+<h5 align=left>C2 = {  0xx01; 01x0x; x1x00; 01xx1; x1x11; 1xx10; 11xx0; 11x1x; xx0xx  }</h5>
+<hr>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>C2*C2<br></td>
+<td>0xx01<br></td>
+<td>01x0x<br></td>
+<td>x1x00<br></td>
+<td>01xx1<br></td>
+<td>x1x11<br></td>
+<td>1xx10<br></td>
+<td>11xx0<br></td>
+<td>11x1x<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0xx01<br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01x0x<br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x1x00<br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01xx1<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x1x11<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>1xx10<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11xx0<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11x1x<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td>-<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>xx0xx<br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>A3<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+</table>
+<h5 align=left>A3 = {  &Oslash;  }</h5>
+<h5 align=left>Конечное множество простых импликант Z = {  0xx01; 01x0x; x1x00; 01xx1; x1x11; 1xx10; 11xx0; 11x1x; xx0xx  }</h5>
+<hr>
+<h4>Поиск L-экстремалей.</h4>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>z#(Z-z)<br></td>
+<td>0xx01<br></td>
+<td>01x0x<br></td>
+<td>x1x00<br></td>
+<td>01xx1<br></td>
+<td>x1x11<br></td>
+<td>1xx10<br></td>
+<td>11xx0<br></td>
+<td>11x1x<br></td>
+<td>xx0xx<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=3>
+<td>0xx01<br></td>
+<td>-<br></td>
+<td>01x00<br></td>
+<td>x1x00<br></td>
+<td>01x11<br></td>
+<td>x1x11<br></td>
+<td>1xx10<br></td>
+<td>11xx0<br></td>
+<td>11x1x<br></td>
+<td>1x0xx<br>xx01x<br>xx0x0<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=5>
+<td>01x0x<br></td>
+<td>00x01<br></td>
+<td>-<br></td>
+<td>11x00<br></td>
+<td>01x11<br></td>
+<td>x1x11<br></td>
+<td>1xx10<br></td>
+<td>11xx0<br></td>
+<td>11x1x<br></td>
+<td>1x0xx<br>xx01x<br>1x0x0<br>x00x0<br>xx010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=8>
+<td>x1x00<br></td>
+<td>00x01<br></td>
+<td>&Oslash;<br></td>
+<td>-<br></td>
+<td>01x11<br></td>
+<td>x1x11<br></td>
+<td>1xx10<br></td>
+<td>11x10<br></td>
+<td>11x1x<br></td>
+<td>100xx<br>1x01x<br>1x0x1<br>xx01x<br>100x0<br>1x010<br>x00x0<br>xx010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=10>
+<td>01xx1<br></td>
+<td>00x01<br></td>
+<td>&Oslash;<br></td>
+<td>11x00<br></td>
+<td>-<br></td>
+<td>11x11<br></td>
+<td>1xx10<br></td>
+<td>11x10<br></td>
+<td>11x1x<br></td>
+<td>100xx<br>1x01x<br>1x0x1<br>1x01x<br>x001x<br>xx010<br>100x0<br>1x010<br>x00x0<br>xx010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=13>
+<td>x1x11<br></td>
+<td>00x01<br></td>
+<td>&Oslash;<br></td>
+<td>11x00<br></td>
+<td>&Oslash;<br></td>
+<td>-<br></td>
+<td>1xx10<br></td>
+<td>11x10<br></td>
+<td>11x10<br></td>
+<td>100xx<br>1001x<br>1x010<br>100x1<br>1x001<br>1001x<br>1x010<br>x001x<br>xx010<br>100x0<br>1x010<br>x00x0<br>xx010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=13>
+<td>1xx10<br></td>
+<td>00x01<br></td>
+<td>&Oslash;<br></td>
+<td>11x00<br></td>
+<td>&Oslash;<br></td>
+<td>11x11<br></td>
+<td>-<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>1000x<br>100x1<br>10011<br>100x1<br>1x001<br>10011<br>0001x<br>x0011<br>0x010<br>10000<br>000x0<br>x0000<br>0x010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=13>
+<td>11xx0<br></td>
+<td>00x01<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>11x11<br></td>
+<td>10x10<br></td>
+<td>-<br></td>
+<td>&Oslash;<br></td>
+<td>1000x<br>100x1<br>10011<br>100x1<br>1x001<br>10011<br>0001x<br>x0011<br>0x010<br>10000<br>000x0<br>x0000<br>0x010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=13>
+<td>11x1x<br></td>
+<td>00x01<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>10x10<br></td>
+<td>&Oslash;<br></td>
+<td>-<br></td>
+<td>1000x<br>100x1<br>10011<br>100x1<br>1x001<br>10011<br>0001x<br>x0011<br>0x010<br>10000<br>000x0<br>x0000<br>0x010<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=13>
+<td>xx0xx<br></td>
+<td>00101<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>10110<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>-<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=13>
+<td>Остаток<br></td>
+<td>00101<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>10110<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>1000x<br>100x1<br>10011<br>100x1<br>1x001<br>10011<br>0001x<br>x0011<br>0x010<br>10000<br>000x0<br>x0000<br>0x010<br></td>
+</tr>
+</table>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>z#(Z-z) n L<br></td>
+<td>00101<br></td>
+<td>01100<br></td>
+<td>01101<br></td>
+<td>01111<br></td>
+<td>10110<br></td>
+<td>11100<br></td>
+<td>11110<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>00101<br></td>
+<td>00101<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>10110<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>10110<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>1000x<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>100x1<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>10011<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>100x1<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>1x001<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>10011<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0001x<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x0011<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0x010<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>10000<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>000x0<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x0000<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0x010<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+</table>
+<h5 align=left>Множество L-экстремалей E = {  0xx01; 1xx10  }</h5>
+<h5 align=left>Z&acute; = Z - E = {  01x0x; x1x00; 01xx1; x1x11; 11xx0; 11x1x; xx0xx  }</h5>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>L#E<br></td>
+<td>00101<br></td>
+<td>01100<br></td>
+<td>01101<br></td>
+<td>01111<br></td>
+<td>10110<br></td>
+<td>11100<br></td>
+<td>11110<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>0xx01<br></td>
+<td>&Oslash;<br></td>
+<td>01100<br></td>
+<td>&Oslash;<br></td>
+<td>01111<br></td>
+<td>10110<br></td>
+<td>11100<br></td>
+<td>11110<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>1xx10<br></td>
+<td>&Oslash;<br></td>
+<td>01100<br></td>
+<td>&Oslash;<br></td>
+<td>01111<br></td>
+<td>&Oslash;<br></td>
+<td>11100<br></td>
+<td>&Oslash;<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>Остаток<br></td>
+<td>&Oslash;<br></td>
+<td>01100<br></td>
+<td>&Oslash;<br></td>
+<td>01111<br></td>
+<td>&Oslash;<br></td>
+<td>11100<br></td>
+<td>&Oslash;<br></td>
+<td>11111<br></td>
+</tr>
+</table>
+<h5 align=left>Множество кубов, непокрываемых L-экстремалями, L&acute; = L # E = {  01100; 01111; 11100; 11111  }</h5>
+<h4></h4>
+<table border=0 bgcolor=#000000>
+<tr bgcolor=white align=center rowspan=1>
+<td>Z&acute;i n L&acute;<br></td>
+<td>01100<br></td>
+<td>01111<br></td>
+<td>11100<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01x0x<br></td>
+<td>01100<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x1x00<br></td>
+<td>01100<br></td>
+<td>&Oslash;<br></td>
+<td>11100<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>01xx1<br></td>
+<td>&Oslash;<br></td>
+<td>01111<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>x1x11<br></td>
+<td>&Oslash;<br></td>
+<td>01111<br></td>
+<td>&Oslash;<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11xx0<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>11100<br></td>
+<td>&Oslash;<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>11x1x<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>11111<br></td>
+</tr>
+<tr bgcolor=white align=center rowspan=1>
+<td>xx0xx<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+<td>&Oslash;<br></td>
+</tr>
+</table>
+<h5 align=left>Могут быть получены следующие тупиковые формы:</h5>
+<h5 align=left>Fmin1 = {  x1x00; x1x11; 0xx01; 1xx10  }</h5>
+<h5>Отчет создан за 0.000 сек.</h5>
+</center>
+</body>
+</HTML>
