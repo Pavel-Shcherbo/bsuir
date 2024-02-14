@@ -1,0 +1,3 @@
+Brand: audi
+Year: 2019
+Carrying capacity (kg): 2000
