@@ -28,6 +28,7 @@
 		BFFD0C072B99E034007E8A0A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		BFFD0C0E2B99E099007E8A0A /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BFFD0C102B9A0A72007E8A0A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BFFD0C112B9A0AED007E8A0A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 				BFFD0C072B99E034007E8A0A /* main.c */,
 				BFFD0C0E2B99E099007E8A0A /* Makefile */,
 				BFFD0C102B9A0A72007E8A0A /* README.md */,
+				BFFD0C112B9A0AED007E8A0A /* .gitignore */,
 			);
 			path = lab1;
 			sourceTree = "<group>";
